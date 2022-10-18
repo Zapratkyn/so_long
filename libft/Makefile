@@ -5,32 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/18 16:22:43 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/18 17:16:15 by gponcele         ###   ########.fr        #
+#    Created: 2022/10/18 16:58:07 by gponcele          #+#    #+#              #
+#    Updated: 2022/10/18 17:05:18 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME					=	so_long
-SRC						=	so_long.c
-LIBFT					=	./libft/libft.a
-CC						=	gcc
-RM						=	rm -rf
-INCLUDES				=	-I./includes -I./MLX
-CFLAGS					=	-Wall -Wextra -Werror 
-OBJS					=	$(SRC:.c=.o)
-LMLX					=	-lmlx -framework OpenGL -framework AppKit
+SRCS					=	ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c
+OBJS					= 	$(SRCS:.c=.o)
+CC						= 	gcc
+RM						= 	rm -f
+CFLAGS					= 	-Wall -Wextra -Werror
+NAME					= 	libft.a
 
-all: $(NAME)
+all:					$(NAME)
 
 $(NAME): $(OBJS)
-			$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(SRC) $(LMLX) -o $(NAME)
-
+		ar rcs $(NAME) $(OBJS)
 clean:
-			$(RM) $(OBJS)
-
-fclean:
-			$(RM) $(NAME)
-
-re: fclean all
-
-.PHONY: all clean fclean re
+		$(RM) $(OBJS)
+fclean:	clean
+		$(RM) $(NAME)
+re:	fclean $(NAME)
+.PHONY	= all clean fclean re

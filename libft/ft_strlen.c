@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/18 17:07:31 by gponcele         ###   ########.fr       */
+/*   Created: 2022/07/04 18:07:27 by gponcele          #+#    #+#             */
+/*   Updated: 2022/10/18 17:05:05 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "MLX/mlx.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	size_t	i;
 
-	(void)argc;
-	(void)argv;
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "test");
-	mlx_loop(mlx_ptr);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
