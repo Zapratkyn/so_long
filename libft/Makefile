@@ -6,11 +6,11 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:58:07 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/18 17:05:18 by gponcele         ###   ########.fr        #
+#    Updated: 2022/10/18 17:47:59 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS					=	ft_putnbr.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c
+SRCS					=	ft_putnbr_fd.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c
 OBJS					= 	$(SRCS:.c=.o)
 CC						= 	gcc
 RM						= 	rm -f
