@@ -6,7 +6,7 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:22:43 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/18 17:16:15 by gponcele         ###   ########.fr        #
+#    Updated: 2022/10/18 17:22:35 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(NAME): $(OBJS)
 clean:
 			$(RM) $(OBJS)
 
-fclean:
+fclean: clean
 			$(RM) $(NAME)
 
 re: fclean all
