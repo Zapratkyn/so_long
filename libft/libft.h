@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:00:09 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 13:30:12 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/19 14:16:36 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@
 #  define BUFFER_SIZE 50
 # endif
 
-typedef struct s_map	t_map;
-
-struct s_map
-{
-	int					x;
-	int					y;
-};
-
 void								ft_putnbr_fd(int n, int fd);
 void								ft_putstr_fd(char *s, int fd);
 void								ft_putchar_fd(char c, int fd);
@@ -39,7 +31,6 @@ char								*empty_string(void);
 char								*ft_strjoin(char *s1, char *s2);
 char								*ft_strchr(char *s, int c);
 char								*get_next_line(int fd);
-void								error(char *msg, t_map *map);
 void								ft_putendl_fd(char *s, int fd);
 int									ft_printf(const char *s, ...);
 int									ft_formats(va_list ap, const char format);
