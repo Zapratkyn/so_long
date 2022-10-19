@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   get_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:07:27 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 12:25:46 by gponcele         ###   ########.fr       */
+/*   Created: 2022/10/19 12:22:39 by gponcele          #+#    #+#             */
+/*   Updated: 2022/10/19 13:16:03 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-size_t	ft_strlen(const char *s)
+int	get_dim(int fd, int a)
 {
-	size_t	i;
+	int		y;
+	char	*str;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	y = 0;
+	str = get_next_line(fd);
+	if (a == 1)
+		return (ft_strlen(str) * 100);
+	y++;
+	free(str);
+	while (str)
+	{
+		y++;
+		str = get_next_line(fd);
+		free(str);
+	}
+	return (y * 100);
 }

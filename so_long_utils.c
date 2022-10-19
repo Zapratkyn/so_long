@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:07:27 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 12:25:46 by gponcele         ###   ########.fr       */
+/*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
+/*   Updated: 2022/10/19 13:43:19 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen(const char *s)
+int	ft_move(int key)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (key == 0)
+		return (1);
+	else if (key == 1)
+		return (1);
+	else if (key == 2)
+		return (1);
+	else if (key == 13)
+		return (1);
+	return (0);
 }
