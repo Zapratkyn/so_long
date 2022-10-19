@@ -6,12 +6,11 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 14:30:58 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/19 14:33:57 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 #include <unistd.h>
 
 t_map	*ft_map_init(char *str)
@@ -36,7 +35,7 @@ int	deal_key(int key, t_map *param)
 	if (ft_move(key, param))
 	{
 		key_press++;
-		printf("Moves : %d\n", key_press);
+		ft_printf("Moves : %d\n", key_press);
 	}
 	return (0);
 }

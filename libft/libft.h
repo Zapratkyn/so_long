@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:00:09 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 14:16:36 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/19 14:34:56 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include	<string.h>
 # include	<limits.h>
 # include	<stdarg.h>
+# include	<fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 50

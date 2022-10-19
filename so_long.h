@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 14:22:12 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/19 14:35:01 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include	"./libft/libft.h"
 # include	"MLX/mlx.h"
-# include	<fcntl.h>
 
 typedef struct s_map	t_map;
 
