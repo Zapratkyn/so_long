@@ -6,29 +6,48 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/20 17:10:29 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:29:40 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <unistd.h>
 
-t_map	*ft_map_init(char *str)
+t_map	*map_init(void)
+{
+	t_map	*map;
+
+	map = malloc (sizeof(t_map));
+	if (!map)
+		return (0);
+	map->x = 0;
+	map->y = 0;
+	map->win_ptr = NULL;
+	map->mlx_ptr = NULL;
+	map->c = 0;
+	map->col = NULL;
+	map->e = 0;
+	map->e_x = 0;
+	map->e_y = 0;
+	map->p = 0;
+	map->p_x = 0;
+	map->p_y = 0;
+	return (map);
+}
+
+t_map	*ft_map(char *str)
 {
 	int		fd;
 	t_map	*map;
 
 	fd = open(str, O_RDONLY);
-	map = malloc(sizeof(t_map));
+	map = map_init();
 	if (!map)
 		return (0);
-	map->p = 0;
-	map->col = NULL;
 	get_infos(map, fd);
 	close(fd);
 	if (map->x == map->y)
 		error3("Error", map, 1);
-	ft_printf("x = %d\ny = %d\n", map->x, map->y);
 	return (map);
 }
 
@@ -50,7 +69,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		error("Error\nEXPECTED FORMAT : ./so_long [map_path]");
-	map = ft_map_init(argv[1]);
+	map = ft_map(argv[1]);
 	map->mlx_ptr = mlx_init();
 	map->win_ptr = mlx_new_window(map->mlx_ptr,
 			(map->x * SIZE), (map->y * SIZE), "So long");
