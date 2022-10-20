@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/20 16:41:29 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:10:29 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	(void)argc;
+	if (argc != 2)
+		error("Error\nEXPECTED FORMAT : ./so_long [map_path]");
 	map = ft_map_init(argv[1]);
 	map->mlx_ptr = mlx_init();
 	map->win_ptr = mlx_new_window(map->mlx_ptr,

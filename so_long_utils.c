@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 14:23:55 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:53:25 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	ft_move(int key, t_map *param)
 {
-	if (key == 0)
+	if (key == 0 || key == 123)
 		return (1);
-	else if (key == 1)
+	else if (key == 1 || key == 125)
 		return (1);
-	else if (key == 2)
+	else if (key == 2 || key == 124)
 		return (1);
-	else if (key == 13)
+	else if (key == 13 || key == 126)
 		return (1);
 	else if (key == 53)
 	{
