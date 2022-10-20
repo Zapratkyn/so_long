@@ -6,28 +6,47 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 12:22:39 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 13:16:03 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:40:38 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	get_dim(int fd, int a)
+void	get_infos(t_map *map, int fd)
 {
-	int		y;
-	char	*str;
+	char		*str;
+	static int	y = 0;
 
-	y = 0;
 	str = get_next_line(fd);
-	if (a == 1)
-		return (ft_strlen(str) * 100);
+	map->x = (ft_strlen(str) - 1);
+	get_element(str, map, y);
 	y++;
 	free(str);
 	while (str)
 	{
-		y++;
 		str = get_next_line(fd);
+		if (str)
+		{
+			if ((ft_strlen(str) - 1) != map->x)
+				error2("Error", map, str, 1);
+			get_element(str, map, y);
+			y++;
+		}
 		free(str);
 	}
-	return (y * 100);
+	map->y = y;
+	if (map->c < 1 || map->e != 1 || map->p != 1)
+		error3("Error", map, 2);
+}
+
+void	get_element(char *str, t_map *map, int y)
+{
+	if (!ft_strchr_walls_v(str, map))
+	{
+		if (!ft_strchr_walls_h(str))
+			error2("Error", map, str, 2);
+	}
+	ft_strchr_element(str, y, 'C', map);
+	ft_strchr_element(str, y, 'E', map);
+	ft_strchr_element(str, y, 'P', map);
 }

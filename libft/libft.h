@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:00:09 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 14:34:56 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:32:12 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 void								ft_putnbr_fd(int n, int fd);
 void								ft_putstr_fd(char *s, int fd);
 void								ft_putchar_fd(char c, int fd);
-size_t								ft_strlen(const char *s);
+int									ft_strlen(const char *s);
 char								*empty_string(void);
 char								*ft_strjoin(char *s1, char *s2);
 char								*ft_strchr(char *s, int c);

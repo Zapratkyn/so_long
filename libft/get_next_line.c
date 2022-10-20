@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:22:01 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 13:29:34 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/20 13:43:03 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ char	*make_new_line(char *str)
 		line[i] = str[i];
 		i++;
 	}
-	if (str[i] == '\n')
-	{
-		line[i] = str[i];
-		i++;
-	}
+	line[i] = '\n';
+	i++;
 	line[i] = '\0';
 	return (line);
 }

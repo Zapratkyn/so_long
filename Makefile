@@ -6,12 +6,13 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:22:43 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/19 13:10:41 by gponcele         ###   ########.fr        #
+#    Updated: 2022/10/20 15:19:44 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME					=	so_long
-SRC						=	so_long.c get_info.c so_long_utils.c
+SRC						=	so_long.c get_info.c so_long_utils.c ft_errors.c ft_strchr_so_long.c ft_free.c \
+							ft_draw.c
 LIBFT					=	./libft/libft.a
 CC						=	gcc
 RM						=	rm -rf
