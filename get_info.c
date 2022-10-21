@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 12:22:39 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/20 16:40:38 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/21 16:53:19 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	get_infos(t_map *map, int fd)
 		if (str)
 		{
 			if ((ft_strlen(str) - 1) != map->x)
-				error2("Error", map, str, 1);
+				error2(map, str, 1);
 			get_element(str, map, y);
 			y++;
 		}
@@ -44,9 +44,11 @@ void	get_element(char *str, t_map *map, int y)
 	if (!ft_strchr_walls_v(str, map))
 	{
 		if (!ft_strchr_walls_h(str))
-			error2("Error", map, str, 2);
+			error2(map, str, 2);
 	}
 	ft_strchr_element(str, y, 'C', map);
 	ft_strchr_element(str, y, 'E', map);
 	ft_strchr_element(str, y, 'P', map);
+	ft_strchr_element(str, y, '0', map);
+	ft_strchr_element(str, y, '1', map);
 }

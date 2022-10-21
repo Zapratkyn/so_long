@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/20 17:29:40 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:05:58 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ t_map	*map_init(void)
 	map->win_ptr = NULL;
 	map->mlx_ptr = NULL;
 	map->c = 0;
-	map->col = NULL;
 	map->e = 0;
-	map->e_x = 0;
-	map->e_y = 0;
 	map->p = 0;
-	map->p_x = 0;
-	map->p_y = 0;
+	map->g = 0;
+	map->col = NULL;
+	map->perso = NULL;
+	map->exit = NULL;
+	map->space = NULL;
+	map->wall = NULL;
 	return (map);
 }
 
@@ -55,12 +56,36 @@ int	deal_key(int key, t_map *param)
 {
 	static unsigned int	key_press = 0;
 
+	// ft_putnbr_fd(key, 1);
+	// write (1, "\n", 1);
 	if (ft_move(key, param))
 	{
 		key_press++;
 		ft_printf("Moves : %d\n", key_press);
 	}
 	return (0);
+}
+
+void	ft_display_walls(t_map *map)
+{
+	int		x;
+	int		y;
+	t_wall	*wall;
+
+	x = 0;
+	y = 0;
+	wall = map->wall;
+	while (x <= (map->x * SIZE) || y <= (map->y * SIZE))
+	{
+		x = 0;
+		while (x <= (map->x * SIZE))
+		{
+			if (x == (wall->x * SIZE) && y == (wall->y * SIZE))
+				ft_printf("%d - %d", x, y);	
+			x += SIZE;
+		}
+		y += SIZE;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -75,6 +100,8 @@ int	main(int argc, char **argv)
 			(map->x * SIZE), (map->y * SIZE), "So long");
 	if (!map || !map->mlx_ptr || !map->win_ptr)
 		exit(EXIT_FAILURE);
+	mlx_pixel_put(map->mlx_ptr, map->win_ptr, 200, 200, 0xFFFFFF);
+	ft_display_walls(map);
 	// ft_draw(map);
 	mlx_key_hook(map->win_ptr, deal_key, map);
 	mlx_loop(map->mlx_ptr);
