@@ -16,16 +16,20 @@ void	ft_fill_square(t_map *map, int x, int y, int color)
 {
 	int	a;
 	int	b;
+	int	i;
+	int	j;
 
-	a = x;
-	b = y;
-	while (a <= (x + SIZE) || b <= (y + SIZE))
+	a = ((x * 65) * SIZE);
+	b = ((y * 65) * SIZE);
+	i = a;
+	j = b;
+	while (i < (a + (65 * SIZE)) || j < (b + (65 * SIZE)))
 	{
-		a = 0;
-		while (a <= (x + SIZE))
+		i = a;
+		while (i <= (a + (65 * SIZE)))
 		{
 			mlx_pixel_put(map->mlx_ptr, map->win_ptr, a, b, color);
-			a++;
+			i++;
 		}
 		b++;
 	}
@@ -40,13 +44,13 @@ void	ft_finder(t_map *map, int x, int y)
 	space = map->space;
 	while (col)
 	{
-		if (x == (col->x * SIZE) && y == (col->y * SIZE))
+		if (x == col->x && y == col->y)
 			ft_fill_square(map, x, y, 0x00FF66);
 		col = col->next;
 	}
 	while (space)
 	{
-		if (x == (space->x * SIZE) && y == (space->y * SIZE))
+		if (x == space->x && y == space->y)
 			ft_fill_square(map, x, y, 0xDADA23);
 		space = space->next;
 	}
@@ -57,15 +61,15 @@ void	ft_find(t_map *map, int x, int y)
 	t_wall	*wall;
 
 	wall = map->wall;
-	if (x == (map->perso->x * SIZE) && y == (map->perso->y * SIZE))
+	if (x == map->perso->x && y == map->perso->y)
 		ft_fill_square(map, x, y, 0xFF0000);
-	else if (x == (map->exit->x * SIZE) && (y == map->perso->y * SIZE))
+	else if (x == map->exit->x && y == map->perso->y )
 		ft_fill_square(map, x, y, 0x0900FF);
 	else
 	{
 		while (wall)
 		{
-			if (x == (wall->x * SIZE) && y == (wall->y * SIZE))
+			if (x == wall->x && y == wall->y)
 				ft_fill_square(map, x, y, 0x000000);
 			wall = wall->next;
 		}
@@ -80,15 +84,14 @@ void	ft_draw(t_map *map)
 
 	x = 0;
 	y = 0;
-	map->g = 1;
-	while (x <= (map->x * SIZE) || y <= (map->y * SIZE))
+	while (x < map->x || y < map->y)
 	{
 		x = 0;
-		while (x <= (map->x * SIZE))
+		while (x <= map->x)
 		{
 			ft_find(map, x, y);
-			x += SIZE;
+			x++;
 		}
-		y += SIZE;
+		y++;
 	}
 }

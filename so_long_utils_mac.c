@@ -46,18 +46,18 @@ void	ft_grid(t_map *map)
 	x = 0;
 	y = 0;
 	map->g = 1;
-	while (x != (map->x * SIZE) || y != (map->y * SIZE))
+	while (x != (map->x * (65 * SIZE)) || y != (map->y * (65 * SIZE)))
 	{
 		x = 0;
-		while (y % SIZE == 0 && x != (map->x * SIZE))
+		while (y % (65 * SIZE) == 0 && x != (map->x * (65 * SIZE)))
 		{
 			mlx_pixel_put(map->mlx_ptr, map->win_ptr, x, y, 0xFFFFFF);
 			x++;
 		}
-		while (y % SIZE != 0 && x != (map->x * SIZE))
+		while (y % (65 * SIZE) != 0 && x != (map->x * (65 * SIZE)))
 		{
 			mlx_pixel_put(map->mlx_ptr, map->win_ptr, x, y, 0xFFFFFF);
-			x += SIZE;
+			x += (65 * SIZE);
 		}
 		y++;
 	}

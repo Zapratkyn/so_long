@@ -34,11 +34,8 @@ all:
 linux: $(OBJS_LINUX)
 		$(CC) $(CFLAGS) $(INCLUDES) $(SRC_LINUX) $(LMLX_LINUX) -o $(NAME)
 
-mac: $(OBJS_MAC) $(LIBFT)
+mac: $(OBJS_MAC)
 		$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(SRC_MAC) $(LMLX_MAC) -o $(NAME)
-
-$(LIBFT):
-		$(MAKE) -C ./libft
 
 clean:
 		$(RM) $(OBJS_LINUX) $(OBJS_MAC)
