@@ -24,7 +24,7 @@ int	ft_move(int key, t_map *map)
 		return (1);
 	else if (key == 103)
 	{
-		if (map->g == 1)
+		if (map->g == 0)
 			ft_grid(map);
 		else
 			ft_draw(map);
