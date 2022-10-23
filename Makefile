@@ -11,27 +11,41 @@
 # **************************************************************************** #
 
 NAME					=	so_long
-SRC						=	so_long.c get_info.c so_long_utils.c ft_errors.c ft_strchr_so_long.c ft_free.c \
+SRC_MAC					=	so_long.c get_info.c so_long_utils_mac.c ft_errors.c ft_strchr_so_long.c ft_free.c \
 							ft_draw.c ft_parsing.c
+SRC_LINUX				=	so_long.c get_info.c so_long_utils_linux.c ft_errors.c ft_strchr_so_long.c ft_free.c \
+							ft_draw.c ft_parsing.c \
+							libft/ft_print_char.c libft/ft_print_nbr.c libft/ft_print_others.c libft/ft_printf.c \
+							libft/ft_putchar_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_putstr_fd.c \
+							libft/ft_strlen.c libft/get_next_line.c libft/get_next_line_utils.c
 LIBFT					=	./libft/libft.a
 CC						=	gcc
 RM						=	rm -rf
 INCLUDES				=	-I./includes -I./MLX
 CFLAGS					=	-Wall -Wextra -Werror 
-OBJS					=	$(SRC:.c=.o)
-LMLX					=	-lmlx -framework OpenGL -framework AppKit
+OBJS_MAC				=	$(SRC_MAC:.c=.o)
+OBJS_LINUX				=	$(SRC_LINUX:.c=.o)
+LMLX_MAC				=	-lmlx -framework OpenGL -framework AppKit
+LMLX_LINUX				=	-lmlx -lXext -lX11
 
-all: $(NAME)
+all:
+	@printf "Précisez le système\n."
 
-$(NAME): $(OBJS)
-			$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(SRC) $(LMLX) -o $(NAME)
+linux: $(OBJS_LINUX)
+		$(CC) $(CFLAGS) $(INCLUDES) $(SRC_LINUX) $(LMLX_LINUX) -o $(NAME)
+
+mac: $(OBJS_MAC) $(LIBFT)
+		$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(SRC_MAC) $(LMLX_MAC) -o $(NAME)
+
+$(LIBFT):
+		$(MAKE) -C ./libft
 
 clean:
-			$(RM) $(OBJS)
+		$(RM) $(OBJS_LINUX) $(OBJS_MAC)
 
 fclean: clean
-			$(RM) $(NAME)
+		$(RM) $(NAME)
 
-re: fclean all
+re: fclean linux
 
 .PHONY: all clean fclean re

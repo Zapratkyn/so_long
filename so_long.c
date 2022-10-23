@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 	if (!map || !map->mlx_ptr || !map->win_ptr)
 		exit(EXIT_FAILURE);
 	mlx_pixel_put(map->mlx_ptr, map->win_ptr, 200, 200, 0xFFFFFF);
-	ft_display_walls(map);
+	// ft_display_walls(map);
 	// ft_draw(map);
 	mlx_key_hook(map->win_ptr, deal_key, map);
 	mlx_loop(map->mlx_ptr);
