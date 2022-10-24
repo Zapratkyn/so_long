@@ -56,15 +56,12 @@ int	deal_key(int key, t_map *map)
 	static unsigned int	key_press = 0;
 	char				*str;
 
-	// ft_putnbr_fd(key, 1);
-	// write (1, "\n", 1);
 	if (ft_move(key, map))
 	{
 		key_press++;
 		ft_fill_square(map, 1, 0, 0x000000);
 		str = ft_itoa(key_press);
 		mlx_string_put(map->mlx_ptr, map->win_ptr, SIZE + 5, (SIZE / 2), 0xFFFFFF, str);
-		// ft_printf("Moves : %d\n", key_press);
 	}
 	return (0);
 }

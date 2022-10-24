@@ -66,10 +66,39 @@ void	ft_grid(t_map *map)
 	}
 }
 
+int	deal_key_end(int key, t_map *map)
+{
+	if (key == 113)
+	{
+		mlx_clear_window(map->mlx_ptr, map->win_ptr);
+		mlx_destroy_window(map->mlx_ptr, map->win_ptr);
+		exit(EXIT_SUCCESS);
+	}
+	return (0);
+}
+
 void	ft_win(t_map *map)
 {
-	ft_printf("YOU WIN !!!\n");
-	mlx_clear_window(map->mlx_ptr, map->win_ptr);
-	mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-	exit(EXIT_SUCCESS);
+	int	x;
+	int	y;
+	int	a;
+	int	b;
+
+	x = 0;
+	y = 0;
+	a = (SIZE * (map->x - 1)) / 2;
+	b = (SIZE * map->y) / 2;
+	while (x < (map->x * SIZE) || y < (map->y * SIZE))
+	{
+		x = 0;
+		while (x <= (map->x * SIZE))
+		{
+			mlx_pixel_put(map->mlx_ptr, map->win_ptr, x, y, 0x000000);
+			x++;
+		}
+		y++;
+	}
+	mlx_string_put(map->mlx_ptr, map->win_ptr, a, b, 0xFFFFFF, "YOU WIN !!!");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, a - 15, b + 20, 0xFFFFFF, "PRESS Q TO QUIT");
+	mlx_key_hook(map->win_ptr, deal_key_end, map);
 }

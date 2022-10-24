@@ -17,7 +17,7 @@
 # include	"MLX/mlx.h"
 
 # ifndef SIZE
-#  define SIZE 65
+#  define SIZE 60
 # endif
 
 typedef struct s_map	t_map;
