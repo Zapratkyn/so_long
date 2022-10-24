@@ -19,14 +19,14 @@ void	ft_fill_square(t_map *map, int x, int y, int color)
 	int	i;
 	int	j;
 
-	a = ((x * 65) * SIZE);
-	b = ((y * 65) * SIZE);
+	a = (x * SIZE);
+	b = (y * SIZE);
 	i = a;
 	j = b;
-	while (i < (a + (65 * SIZE)) || j < (b + (65 * SIZE)))
+	while (i < (a + SIZE) || j < (b + SIZE))
 	{
 		i = a;
-		while (i <= (a + (65 * SIZE)))
+		while (i <= (a + SIZE))
 		{
 			mlx_pixel_put(map->mlx_ptr, map->win_ptr, i, j, color);
 			i++;

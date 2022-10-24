@@ -46,6 +46,8 @@ t_map	*ft_map(char *str)
 	close(fd);
 	if (map->x == map->y)
 		error3("Error\nSome elements are missing or several.", map);
+	// if (!ft_check_paths(map))
+	// 	error3("Error\nUnreachable item or exit.", map);
 	return (map);
 }
 
@@ -72,7 +74,7 @@ int	main(int argc, char **argv)
 	map = ft_map(argv[1]);
 	map->mlx_ptr = mlx_init();
 	map->win_ptr = mlx_new_window(map->mlx_ptr,
-			((map->x * 65) * SIZE), ((map->y * 65) * SIZE), "So long");
+			(map->x * SIZE), (map->y * SIZE), "So long");
 	if (!map || !map->mlx_ptr || !map->win_ptr)
 		exit(EXIT_FAILURE);
 	ft_draw(map);
