@@ -16,7 +16,6 @@ void	ft_collectibles(t_map *map, int x, int y, char *str)
 {
 	t_col		*temp;
 	t_col		*index;
-	static int	i = 1;
 
 	map->c += 1;
 	temp = malloc (sizeof(t_col));
@@ -24,7 +23,6 @@ void	ft_collectibles(t_map *map, int x, int y, char *str)
 		error2("Error", map, str);
 	temp->x = x;
 	temp->y = y;
-	temp->index = i++;
 	temp->next = NULL;
 	if (map->c == 1)
 		map->game->col = temp;

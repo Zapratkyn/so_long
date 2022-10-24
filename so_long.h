@@ -60,7 +60,6 @@ struct s_col
 {
 	int					x;
 	int					y;
-	int					index;
 	t_col				*next;
 };
 

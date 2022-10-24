@@ -45,7 +45,7 @@ t_map	*ft_map(char *str)
 	get_infos(map, fd);
 	close(fd);
 	if (map->x == map->y)
-		error3("Error\nSome elements are missing or several.", map);
+		error3("Error\nThe map is a square.", map);
 	// if (!ft_check_paths(map))
 	// 	error3("Error\nUnreachable item or exit.", map);
 	return (map);

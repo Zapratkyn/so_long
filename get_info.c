@@ -36,7 +36,7 @@ void	get_infos(t_map *map, int fd)
 	}
 	map->y = y;
 	if (map->c < 1 || map->e != 1 || map->p != 1)
-		error3("Error\nMap is a square.", map);
+		error3("Error\nSome elements are missing or several.", map);
 }
 
 void	get_element(char *str, t_map *map, int y)
