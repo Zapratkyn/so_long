@@ -12,7 +12,7 @@
 
 SRCS					=	ft_putnbr_fd.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c get_next_line.c \
 								get_next_line_utils.c ft_putendl_fd.c ft_printf.c ft_print_char.c \
-								ft_print_nbr.c ft_print_others.c
+								ft_print_nbr.c ft_print_others.c ft_itoa.c
 OBJS					= 	$(SRCS:.c=.o)
 CC						= 	gcc
 RM						= 	rm -f

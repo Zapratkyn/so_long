@@ -69,11 +69,7 @@ int ft_move_up(t_map *map)
     if (x == map->bg->exit->x && y == (map->bg->exit->y + 1))
     {
         if (map->c == 0)
-        {
-            mlx_clear_window(map->mlx_ptr, map->win_ptr);
-		    mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-		    exit(EXIT_SUCCESS);
-        }
+            ft_win(map);
         else
             return (0);
     }
@@ -109,11 +105,7 @@ int ft_move_left(t_map *map)
     if (x == (map->bg->exit->x + 1) && y == map->bg->exit->y)
     {
         if (map->c == 0)
-        {
-            mlx_clear_window(map->mlx_ptr, map->win_ptr);
-		    mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-		    exit(EXIT_SUCCESS);
-        }
+            ft_win(map);
         else
             return (0);
     }
@@ -149,11 +141,7 @@ int ft_move_down(t_map *map)
     if (x == map->bg->exit->x && y == (map->bg->exit->y - 1))
     {
         if (map->c == 0)
-        {
-            mlx_clear_window(map->mlx_ptr, map->win_ptr);
-		    mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-		    exit(EXIT_SUCCESS);
-        }
+            ft_win(map);
         else
             return (0);
     }
@@ -189,11 +177,7 @@ int ft_move_right(t_map *map)
     if (x == (map->bg->exit->x - 1) && y == map->bg->exit->y)
     {
         if (map->c == 0)
-        {
-            mlx_clear_window(map->mlx_ptr, map->win_ptr);
-		    mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-		    exit(EXIT_SUCCESS);
-        }
+            ft_win(map);
         else
             return (0);
     }

@@ -42,6 +42,7 @@ int									ft_print_char(char c);
 int									ft_strlen_int(int n);
 char								*ft_itoa_printf(int n);
 int									ft_print_nbr(int nb);
+char								*ft_itoa(int n);
 int									ft_strlen_int_unsigned(unsigned int n);
 char								*ft_itoa_unsigned(unsigned int n);
 int									ft_print_unsigned(unsigned int nb);

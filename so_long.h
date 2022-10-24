@@ -17,7 +17,7 @@
 # include	"MLX/mlx.h"
 
 # ifndef SIZE
-#  define SIZE 30
+#  define SIZE 65
 # endif
 
 typedef struct s_map	t_map;
@@ -97,6 +97,7 @@ t_map					*ft_map_init(char *str);
 // so_long_utils.c
 int						ft_move(int key, t_map *map);
 void					ft_grid(t_map *map);
+void					ft_win(t_map *map);
 // get_info.c
 void					get_infos(t_map *map, int fd);
 void					ft_check_params(int fd, t_map *map);

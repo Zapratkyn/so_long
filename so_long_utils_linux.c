@@ -65,3 +65,11 @@ void	ft_grid(t_map *map)
 		y++;
 	}
 }
+
+void	ft_win(t_map *map)
+{
+	ft_printf("YOU WIN !!!\n");
+	mlx_clear_window(map->mlx_ptr, map->win_ptr);
+	mlx_destroy_window(map->mlx_ptr, map->win_ptr);
+	exit(EXIT_SUCCESS);
+}

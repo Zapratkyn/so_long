@@ -17,7 +17,7 @@ SRC_LINUX				=	so_long.c get_info.c so_long_utils_linux.c ft_errors.c ft_strchr_
 							ft_draw.c ft_parsing.c ft_moves.c \
 							libft/ft_print_char.c libft/ft_print_nbr.c libft/ft_print_others.c libft/ft_printf.c \
 							libft/ft_putchar_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_putstr_fd.c \
-							libft/ft_strlen.c libft/get_next_line.c libft/get_next_line_utils.c
+							libft/ft_strlen.c libft/get_next_line.c libft/get_next_line_utils.c libft/ft_itoa.c
 LIBFT					=	./libft/libft.a
 CC						=	gcc
 RM						=	rm -rf

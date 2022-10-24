@@ -54,13 +54,17 @@ t_map	*ft_map(char *str)
 int	deal_key(int key, t_map *map)
 {
 	static unsigned int	key_press = 0;
+	char				*str;
 
 	// ft_putnbr_fd(key, 1);
 	// write (1, "\n", 1);
 	if (ft_move(key, map))
 	{
 		key_press++;
-		ft_printf("Moves : %d\n", key_press);
+		ft_fill_square(map, 1, 0, 0x000000);
+		str = ft_itoa(key_press);
+		mlx_string_put(map->mlx_ptr, map->win_ptr, SIZE + 5, (SIZE / 2), 0xFFFFFF, str);
+		// ft_printf("Moves : %d\n", key_press);
 	}
 	return (0);
 }
@@ -78,6 +82,8 @@ int	main(int argc, char **argv)
 	if (!map || !map->mlx_ptr || !map->win_ptr)
 		exit(EXIT_FAILURE);
 	ft_draw(map);
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 10, (SIZE / 2), 0xFFFFFF, "Moves :");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, SIZE + 5, ((SIZE / 2) + 2), 0xFFFFFF, "0");
 	mlx_key_hook(map->win_ptr, deal_key, map);
 	mlx_loop(map->mlx_ptr);
 }
