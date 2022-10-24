@@ -28,7 +28,7 @@ void	get_infos(t_map *map, int fd)
 		if (str)
 		{
 			if ((ft_strlen(str) - 1) != map->x)
-				error2(map, str, 1);
+				error2("Error\nWrong map shape", map, str);
 			get_element(str, map, y);
 			y++;
 		}
@@ -36,7 +36,7 @@ void	get_infos(t_map *map, int fd)
 	}
 	map->y = y;
 	if (map->c < 1 || map->e != 1 || map->p != 1)
-		error3("Error", map, 2);
+		error3("Error\nMap is a square.", map);
 }
 
 void	get_element(char *str, t_map *map, int y)
@@ -44,7 +44,7 @@ void	get_element(char *str, t_map *map, int y)
 	if (!ft_strchr_walls_v(str, map))
 	{
 		if (!ft_strchr_walls_h(str))
-			error2(map, str, 2);
+			error2("Error\nMap is not surrounded by walls.", map, str);
 	}
 	ft_strchr_element(str, y, 'C', map);
 	ft_strchr_element(str, y, 'E', map);

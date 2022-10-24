@@ -15,13 +15,13 @@
 int	ft_move(int key, t_map *map)
 {
 	if (key == 0 || key == 123)
-		return (1);
+		return (ft_move_up(map));
 	else if (key == 1 || key == 125)
-		return (1);
+		return (ft_move_left(map));
 	else if (key == 2 || key == 124)
-		return (1);
+		return (ft_move_down(map));
 	else if (key == 13 || key == 126)
-		return (1);
+		return (ft_move_right(map));
 	else if (key == 5)
 	{
 		if (map->g == 1)

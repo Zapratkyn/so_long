@@ -18,8 +18,6 @@ t_map	*map_init(void)
 	t_map	*map;
 
 	map = malloc (sizeof(t_map));
-	if (!map)
-		return (0);
 	map->x = 0;
 	map->y = 0;
 	map->win_ptr = NULL;
@@ -28,11 +26,10 @@ t_map	*map_init(void)
 	map->e = 0;
 	map->p = 0;
 	map->g = 0;
-	map->col = NULL;
-	map->perso = NULL;
-	map->exit = NULL;
-	map->space = NULL;
-	map->wall = NULL;
+	map->bg = malloc (sizeof(t_bg));
+	map->game = malloc (sizeof(t_game));
+	if (!map || !map->bg || !map->game)
+		return (0);
 	return (map);
 }
 
@@ -48,44 +45,22 @@ t_map	*ft_map(char *str)
 	get_infos(map, fd);
 	close(fd);
 	if (map->x == map->y)
-		error3("Error", map, 1);
+		error3("Error\nSome elements are missing or several.", map);
 	return (map);
 }
 
-int	deal_key(int key, t_map *param)
+int	deal_key(int key, t_map *map)
 {
 	static unsigned int	key_press = 0;
 
 	// ft_putnbr_fd(key, 1);
 	// write (1, "\n", 1);
-	if (ft_move(key, param))
+	if (ft_move(key, map))
 	{
 		key_press++;
 		ft_printf("Moves : %d\n", key_press);
 	}
 	return (0);
-}
-
-void	ft_display_walls(t_map *map)
-{
-	int		x;
-	int		y;
-	t_wall	*wall;
-
-	x = 0;
-	y = 0;
-	wall = map->wall;
-	while (x <= (map->x * SIZE) || y <= (map->y * SIZE))
-	{
-		x = 0;
-		while (x <= (map->x * SIZE))
-		{
-			if (x == (wall->x * SIZE) && y == (wall->y * SIZE))
-				ft_printf("%d - %d", x, y);	
-			x += SIZE;
-		}
-		y += SIZE;
-	}
 }
 
 int	main(int argc, char **argv)
@@ -100,8 +75,8 @@ int	main(int argc, char **argv)
 			((map->x * 65) * SIZE), ((map->y * 65) * SIZE), "So long");
 	if (!map || !map->mlx_ptr || !map->win_ptr)
 		exit(EXIT_FAILURE);
-	// ft_display_walls(map);
 	ft_draw(map);
+	ft_printf("Hero :\nx = %d\ny = %d\n", map->game->hero->x, map->game->hero->y);
 	mlx_key_hook(map->win_ptr, deal_key, map);
 	mlx_loop(map->mlx_ptr);
 }

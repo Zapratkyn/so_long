@@ -21,51 +21,42 @@ void	ft_collectibles(t_map *map, int x, int y, char *str)
 	map->c += 1;
 	temp = malloc (sizeof(t_col));
 	if (!temp)
-	{
-		ft_putendl_fd("Error", 2);
-		error2(map, str, 0);
-	}
+		error2("Error", map, str);
 	temp->x = x;
 	temp->y = y;
 	temp->index = i++;
 	temp->next = NULL;
 	if (map->c == 1)
-		map->col = temp;
+		map->game->col = temp;
 	else
 	{
-		index = map->col;
+		index = map->game->col;
 		while (index->next)
 			index = index->next;
 		index->next = temp;
 	}
 }
 
-void	ft_perso(t_map *map, int x, int y, char *str)
+void	ft_hero(t_map *map, int x, int y, char *str)
 {
 	map->p += 1;
-	map->perso = malloc (sizeof(t_perso));
-	if (!map->perso)
-	{
-		ft_putendl_fd("Error", 2);
-		error2(map, str, 0);
-	}
-	map->perso->x = x;
-	map->perso->y = y;
-	map->perso->dir = 3;
+	map->game->hero = malloc (sizeof(t_hero));
+	if (!map->game->hero)
+		error2("Error", map, str);
+	map->game->hero->x = x;
+	map->game->hero->y = y;
+	map->game->hero->dir = 3;
 }
 
 void	ft_exit(t_map *map, int x, int y, char *str)
 {
 	map->e += 1;
-	map->exit = malloc (sizeof(t_exit));
-	if (!map->exit)
-	{
-		ft_putendl_fd("Error", 2);
-		error2(map, str, 0);
-	}
-	map->exit->x = x;
-	map->exit->y = y;
-	map->exit->state = 1;
+	map->bg->exit = malloc (sizeof(t_exit));
+	if (!map->bg->exit)
+		error2("Error", map, str);
+	map->bg->exit->x = x;
+	map->bg->exit->y = y;
+	map->bg->exit->state = 1;
 }
 
 void	ft_wall(t_map *map, int x, int y, char *str)
@@ -75,18 +66,15 @@ void	ft_wall(t_map *map, int x, int y, char *str)
 
 	temp = malloc (sizeof(t_wall));
 	if (!temp)
-	{
-		ft_putendl_fd("Error", 2);
-		error2(map, str, 0);
-	}
+		error2("Error", map, str);
 	temp->x = x;
 	temp->y = y;
 	temp->next = NULL;
-	if (!map->wall)
-		map->wall = temp;
+	if (!map->bg->wall)
+		map->bg->wall = temp;
 	else
 	{
-		index = map->wall;
+		index = map->bg->wall;
 		while (index->next)
 			index = index->next;
 		index->next = temp;
@@ -100,18 +88,15 @@ void	ft_space(t_map *map, int x, int y, char *str)
 
 	temp = malloc (sizeof(t_wall));
 	if (!temp)
-	{
-		ft_putendl_fd("Error", 2);
-		error2(map, str, 0);
-	}
+		error2("Error", map, str);
 	temp->x = x;
 	temp->y = y;
 	temp->next = NULL;
-	if (!map->space)
-		map->space = temp;
+	if (!map->bg->space)
+		map->bg->space = temp;
 	else
 	{
-		index = map->space;
+		index = map->bg->space;
 		while (index->next)
 			index = index->next;
 		index->next = temp;

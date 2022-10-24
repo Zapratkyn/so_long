@@ -22,10 +22,12 @@
 
 typedef struct s_map	t_map;
 typedef struct s_col	t_col;
-typedef struct s_perso	t_perso;
+typedef struct s_hero	t_hero;
 typedef struct s_exit	t_exit;
 typedef struct s_wall	t_wall;
 typedef struct s_space	t_space;
+typedef struct s_bg		t_bg;
+typedef struct s_game	t_game;
 
 struct s_map
 {
@@ -37,11 +39,21 @@ struct s_map
 	int					e;
 	int					p;
 	int					g;
-	t_col				*col;
+	t_bg				*bg;
+	t_game				*game;
+};
+
+struct s_bg
+{
 	t_space				*space;
 	t_exit				*exit;
-	t_perso				*perso;
 	t_wall				*wall;
+};
+
+struct s_game
+{
+	t_hero				*hero;
+	t_col				*col;
 };
 
 struct s_col
@@ -52,7 +64,7 @@ struct s_col
 	t_col				*next;
 };
 
-struct s_perso
+struct s_hero
 {
 	int					x;
 	int					y;
@@ -91,9 +103,8 @@ void					ft_check_params(int fd, t_map *map);
 void					get_element(char *str, t_map *map, int y);
 // ft_errors.c
 void					error(char *msg);
-void					error2(t_map *map, char *str, int i);
-void					error3(char *msg, t_map *map, int i);
-void					error4(char *msg, t_map *map, char *str);
+void					error2(char *msg, t_map *map, char *str);
+void					error3(char *msg, t_map *map);
 // ft_strchr_so_long.c
 void					ft_strchr_element(char *str, int y, char c, t_map *map);
 int						ft_strchr_walls_h(char *str);
@@ -104,11 +115,19 @@ void					ft_free_wall(t_map *map);
 void					ft_free_space(t_map *map);
 // ft_parsing.c
 void					ft_collectibles(t_map *map, int x, int y, char *str);
-void					ft_perso(t_map *map, int x, int y, char *str);
+void					ft_hero(t_map *map, int x, int y, char *str);
 void					ft_exit(t_map *map, int x, int y, char *str);
 void					ft_wall(t_map *map, int x, int y, char *str);
 void					ft_space(t_map *map, int x, int y, char *str);
 // ft_draw.c
+void					ft_fill_square(t_map *map, int x, int y, int color);
+void					ft_finder(t_map *map, int x, int y);
+void					ft_find(t_map *map, int x, int y);
 void					ft_draw(t_map *map);
+// ft_moves.c
+int 					ft_move_up(t_map *map);
+int 					ft_move_left(t_map *map);
+int 					ft_move_down(t_map *map);
+int 					ft_move_right(t_map *map);
 
 #endif

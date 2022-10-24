@@ -17,14 +17,16 @@ void	ft_free_col(t_map *map)
 	t_col	*temp;
 	t_col	*index;
 
-	while (map->col->next->next)
+	if (map->game->hero)
+		free(map->game->hero);
+	while (map->game->col->next->next)
 	{
-		index = map->col->next;
+		index = map->game->col->next;
 		temp = index->next->next;
 		free(index->next);
 		index->next = temp;
 	}
-	free(map->col->next);
+	free(map->game->col->next);
 }
 
 void	ft_free_wall(t_map *map)
@@ -32,14 +34,16 @@ void	ft_free_wall(t_map *map)
 	t_wall	*temp;
 	t_wall	*index;
 
-	while (map->wall->next->next)
+	if (map->bg->exit)
+		free(map->bg->exit);
+	while (map->bg->wall->next->next)
 	{
-		index = map->wall->next;
+		index = map->bg->wall->next;
 		temp = index->next->next;
 		free(index->next);
 		index->next = temp;
 	}
-	free(map->wall->next);
+	free(map->bg->wall->next);
 }
 
 void	ft_free_space(t_map *map)
@@ -47,12 +51,14 @@ void	ft_free_space(t_map *map)
 	t_space	*temp;
 	t_space	*index;
 
-	while (map->space->next->next)
+	if (map->bg->exit)
+		free(map->bg->exit);
+	while (map->bg->space->next->next)
 	{
-		index = map->space->next;
+		index = map->bg->space->next;
 		temp = index->next->next;
 		free(index->next);
 		index->next = temp;
 	}
-	free(map->space->next);
+	free(map->bg->space->next);
 }

@@ -28,10 +28,10 @@ void	ft_fill_square(t_map *map, int x, int y, int color)
 		i = a;
 		while (i <= (a + (65 * SIZE)))
 		{
-			mlx_pixel_put(map->mlx_ptr, map->win_ptr, a, b, color);
+			mlx_pixel_put(map->mlx_ptr, map->win_ptr, i, j, color);
 			i++;
 		}
-		b++;
+		j++;
 	}
 }
 
@@ -40,8 +40,8 @@ void	ft_finder(t_map *map, int x, int y)
 	t_col	*col;
 	t_space	*space;
 
-	col = map->col;
-	space = map->space;
+	col = map->game->col;
+	space = map->bg->space;
 	while (col)
 	{
 		if (x == col->x && y == col->y)
@@ -60,10 +60,10 @@ void	ft_find(t_map *map, int x, int y)
 {
 	t_wall	*wall;
 
-	wall = map->wall;
-	if (x == map->perso->x && y == map->perso->y)
+	wall = map->bg->wall;
+	if (x == map->game->hero->x && y == map->game->hero->y)
 		ft_fill_square(map, x, y, 0xFF0000);
-	else if (x == map->exit->x && y == map->perso->y )
+	else if (x == map->bg->exit->x && y == map->bg->exit->y )
 		ft_fill_square(map, x, y, 0x0900FF);
 	else
 	{

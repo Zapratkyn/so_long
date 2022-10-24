@@ -22,7 +22,7 @@ void	ft_strchr_element(char *str, int y, char c, t_map *map)
 		if (str[i] == c)
 		{
 			if (c == 'P')
-				ft_perso(map, i, y, str);
+				ft_hero(map, i, y, str);
 			else if (c == 'E')
 				ft_exit(map, i, y, str);
 			else if (c == 'C')
@@ -62,7 +62,7 @@ int	ft_strchr_walls_v(char *str, t_map *map)
 	{
 		if (str[i] != '0' && str[i] != '1'
 			&& str[i] != 'C' && str[i] != 'E' && str[i] != 'P')
-			error4("Error", map, str);
+			error2("Error\nUnwanted elements found in the map.", map, str);
 		i++;
 	}
 	if (str[i] != '1')
