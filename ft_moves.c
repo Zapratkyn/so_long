@@ -28,15 +28,16 @@ void    ft_collect(t_map *map, int x, int y, t_col *col)
     space->next->y = col->y;
     space->next->next = NULL;
     if (map->game->col->x == x && map->game->col->y == y)
-        map->game->col = map->game->col->next;    
+        map->game->col = map->game->col->next;
     else
     {
         temp_col = map->game->col;
-        while (temp_col)
+        while (temp_col->next)
         {
             if (temp_col->next->x == x && temp_col->next->y == y)
                 temp_col->next = temp_col->next->next;
-            temp_col = temp_col->next;
+            else if (temp_col->next)
+                temp_col = temp_col->next;
         }       
     }
     free(col);
