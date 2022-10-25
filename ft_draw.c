@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:19:18 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 18:21:47 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:46:57 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_finder(t_map *map, int x, int y)
 	{
 		if (x == col->x && y == col->y)
 		{
-			ft_fill_square(map, x, y, 0xDADA23);
+			mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
 			mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->col, x * SIZE, y * SIZE);
 		}
 		col = col->next;
@@ -54,7 +54,7 @@ void	ft_finder(t_map *map, int x, int y)
 	while (space)
 	{
 		if (x == space->x && y == space->y)
-			ft_fill_square(map, x, y, 0xDADA23);
+			mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
 		space = space->next;
 	}
 }
@@ -66,7 +66,7 @@ void	ft_find(t_map *map, int x, int y)
 	wall = map->bg->wall;
 	if (x == map->game->hero->x && y == map->game->hero->y)
 	{
-		ft_fill_square(map, x, y, 0xDADA23);
+		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
 		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, x * SIZE, y * SIZE);
 	}
 	else if (x == map->bg->exit->x && y == map->bg->exit->y)
@@ -76,7 +76,10 @@ void	ft_find(t_map *map, int x, int y)
 		while (wall)
 		{
 			if (x == wall->x && y == wall->y)
-				ft_fill_square(map, x, y, 0x6C6363);
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->wall, x * SIZE, y * SIZE);
+			}
 			wall = wall->next;
 		}
 		ft_finder(map, x, y);

@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 18:20:46 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:37:55 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	ft_move_up(t_map *map, unsigned int key_press)
 		else
 			return (0);
 	}
-	ft_fill_square(map, x, y, 0xDADA23);
-	ft_fill_square(map, x, y - 1, 0xDADA23);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, (y - 1) * SIZE);
 	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, x * SIZE, (y - 1) * SIZE);
 	map->game->hero->y -= 1;
 	return (1);
@@ -85,8 +85,8 @@ int	ft_move_left(t_map *map, unsigned int key_press)
 		else
 			return (0);
 	}
-	ft_fill_square(map, x, y, 0xDADA23);
-	ft_fill_square(map, x - 1, y, 0xDADA23);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, (x - 1) * SIZE, y * SIZE);
 	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, (x - 1) * SIZE, y * SIZE);
 	map->game->hero->x -= 1;
 	return (1);
@@ -125,8 +125,8 @@ int	ft_move_down(t_map *map, unsigned int key_press)
 		else
 			return (0);
 	}
-	ft_fill_square(map, x, y, 0xDADA23);
-	ft_fill_square(map, x, y + 1, 0xDADA23);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, (y + 1) * SIZE);
 	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, x * SIZE, (y + 1) * SIZE);
 	map->game->hero->y += 1;
 	return (1);
@@ -165,8 +165,8 @@ int	ft_move_right(t_map *map, unsigned int key_press)
 		else
 			return (0);
 	}
-	ft_fill_square(map, x, y, 0xDADA23);
-	ft_fill_square(map, x + 1, y, 0xDADA23);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, (x + 1) * SIZE, y * SIZE);
 	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, (x + 1) * SIZE, y * SIZE);
 	map->game->hero->x += 1;
 	return (1);
