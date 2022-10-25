@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 16:57:06 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:09:34 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,19 +115,35 @@ void	ft_win(t_map *map, unsigned int key_press)
 	mlx_loop(map->mlx_ptr);
 }
 
+// t_img	*ft_img_init(t_map *map)
+// {
+// 	t_img	*temp;
+// 	int		size;
+	
+// 	size = 1 * SIZE;
+// 	temp = malloc (sizeof(t_img));
+// 	if (!temp)
+// 		error3("Error", map);
+// 	temp->img = NULL;
+// 	temp->height = size;
+// 	temp->width = size;
+// 	return (temp);
+// }
+
 void	images_init(t_map *map)
 {
 	int	size;
 
 	size = 1 * SIZE;
 	map->images->hero_1 = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->hero_1 = mlx_xpm_file_to_image(map->mlx_ptr, "./hero.xpm", size, size);
-	map->images->hero_2 = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->hero_3 = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->hero_4 = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->exit_closed = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->exit_open = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->wall = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->space = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->col = mlx_new_image(map->mlx_ptr, size, size);
+	map->images->hero_1 = mlx_xpm_file_to_image(map->mlx_ptr, "./images/hero.xpm", &size, &size);
+	// ft_printf("%d\n", map->images->hero_1->width);
+	// map->images->hero_2 = mlx_new_image(map->mlx_ptr, size, size);
+	// map->images->hero_3 = mlx_new_image(map->mlx_ptr, size, size);
+	// map->images->hero_4 = mlx_new_image(map->mlx_ptr, size, size);
+	// map->images->exit_closed = mlx_new_image(map->mlx_ptr, size, size);
+	// map->images->exit_open = mlx_new_image(map->mlx_ptr, size, size);
+	// map->images->wall = mlx_new_image(map->mlx_ptr, size, size);
+	// map->images->space = mlx_new_image(map->mlx_ptr, size, size);
+	// map->images->col = mlx_new_image(map->mlx_ptr, size, size);
 }

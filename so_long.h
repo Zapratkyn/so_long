@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 16:57:38 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:04:27 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_space	t_space;
 typedef struct s_bg		t_bg;
 typedef struct s_game	t_game;
 typedef struct s_images	t_images;
+// typedef struct s_img	t_img;
 
 struct s_map
 {
@@ -44,6 +45,13 @@ struct s_map
 	t_bg				*bg;
 	t_game				*game;
 };
+
+// struct s_img
+// {
+// 	void				*img;
+// 	int					width;
+// 	int					height;
+// };
 
 struct s_images
 {
