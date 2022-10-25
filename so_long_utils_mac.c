@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 18:09:34 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:13:08 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,6 @@ void	images_init(t_map *map)
 	// map->images->exit_open = mlx_new_image(map->mlx_ptr, size, size);
 	// map->images->wall = mlx_new_image(map->mlx_ptr, size, size);
 	// map->images->space = mlx_new_image(map->mlx_ptr, size, size);
-	// map->images->col = mlx_new_image(map->mlx_ptr, size, size);
+	map->images->col = mlx_new_image(map->mlx_ptr, size, size);
+	map->images->col = mlx_xpm_file_to_image(map->mlx_ptr, "./images/col.xpm", &size, &size);
 }

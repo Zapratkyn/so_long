@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:19:18 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 18:09:42 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:21:47 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_fill_square(t_map *map, int x, int y, int color)
 	while (i < (a + SIZE) || j < (b + SIZE))
 	{
 		i = a;
-		while (i <= (a + SIZE))
+		while (i < (a + SIZE))
 		{
 			mlx_pixel_put(map->mlx_ptr, map->win_ptr, i, j, color);
 			i++;
@@ -45,7 +45,10 @@ void	ft_finder(t_map *map, int x, int y)
 	while (col)
 	{
 		if (x == col->x && y == col->y)
-			ft_fill_square(map, x, y, 0x00FF66);
+		{
+			ft_fill_square(map, x, y, 0xDADA23);
+			mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->col, x * SIZE, y * SIZE);
+		}
 		col = col->next;
 	}
 	while (space)
@@ -62,8 +65,10 @@ void	ft_find(t_map *map, int x, int y)
 
 	wall = map->bg->wall;
 	if (x == map->game->hero->x && y == map->game->hero->y)
-		// ft_fill_square(map, x, y, 0xFF0000);
-		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, x, y);
+	{
+		ft_fill_square(map, x, y, 0xDADA23);
+		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, x * SIZE, y * SIZE);
+	}
 	else if (x == map->bg->exit->x && y == map->bg->exit->y)
 		ft_fill_square(map, x, y, 0x0900FF);
 	else
