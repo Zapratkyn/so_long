@@ -6,12 +6,11 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 14:48:25 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/19 13:20:13 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 10:50:59 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
 
 int	ft_check_formats(char c, char *set)
 {

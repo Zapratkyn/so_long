@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/21 16:39:13 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:48:50 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include	"MLX/mlx.h"
 
 # ifndef SIZE
-#  define SIZE 60
+#  define SIZE 40
 # endif
 
 typedef struct s_map	t_map;
@@ -28,6 +28,7 @@ typedef struct s_wall	t_wall;
 typedef struct s_space	t_space;
 typedef struct s_bg		t_bg;
 typedef struct s_game	t_game;
+typedef struct s_images	t_images;
 
 struct s_map
 {
@@ -39,8 +40,22 @@ struct s_map
 	int					e;
 	int					p;
 	int					g;
+	t_images			*images;
 	t_bg				*bg;
 	t_game				*game;
+};
+
+struct s_images
+{
+	char				*hero_1;
+	char				*hero_2;
+	char				*hero_3;
+	char				*hero_4;
+	char				*exit_closed;
+	char				*exit_open;
+	char				*wall;
+	char				*space;
+	char				*col;
 };
 
 struct s_bg
@@ -97,6 +112,7 @@ t_map					*ft_map_init(char *str);
 int						ft_move(int key, t_map *map);
 void					ft_grid(t_map *map);
 void					ft_win(t_map *map);
+t_images				*images_init(void);
 // get_info.c
 void					get_infos(t_map *map, int fd);
 void					ft_check_params(int fd, t_map *map);
@@ -105,6 +121,8 @@ void					get_element(char *str, t_map *map, int y);
 void					error(char *msg);
 void					error2(char *msg, t_map *map, char *str);
 void					error3(char *msg, t_map *map);
+// ft_success.c
+void					ft_success(t_map *map);
 // ft_strchr_so_long.c
 void					ft_strchr_element(char *str, int y, char c, t_map *map);
 int						ft_strchr_walls_h(char *str);
@@ -113,6 +131,7 @@ int						ft_strchr_walls_v(char *str, t_map *map);
 void					ft_free_col(t_map *map);
 void					ft_free_wall(t_map *map);
 void					ft_free_space(t_map *map);
+int					ft_free_images(t_map *map);
 // ft_parsing.c
 void					ft_collectibles(t_map *map, int x, int y, char *str);
 void					ft_hero(t_map *map, int x, int y, char *str);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   so_long_utils_linux.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/21 16:39:43 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:54:53 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	deal_key_end(int key, t_map *map)
 {
 	if (key == 113)
 	{
-		mlx_clear_window(map->mlx_ptr, map->win_ptr);
 		mlx_destroy_window(map->mlx_ptr, map->win_ptr);
 		exit(EXIT_SUCCESS);
 	}
@@ -101,4 +100,5 @@ void	ft_win(t_map *map)
 	mlx_string_put(map->mlx_ptr, map->win_ptr, a, b, 0xFFFFFF, "YOU WIN !!!");
 	mlx_string_put(map->mlx_ptr, map->win_ptr, a - 15, b + 20, 0xFFFFFF, "PRESS Q TO QUIT");
 	mlx_key_hook(map->win_ptr, deal_key_end, map);
+	mlx_loop(map->mlx_ptr);
 }

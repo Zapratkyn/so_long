@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 14:55:58 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/21 16:31:46 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:12:42 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_space(t_map *map, int x, int y, char *str)
 	t_space	*temp;
 	t_space	*index;
 
-	temp = malloc (sizeof(t_wall));
+	temp = malloc (sizeof(t_space));
 	if (!temp)
 		error2("Error", map, str);
 	temp->x = x;

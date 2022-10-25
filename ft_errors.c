@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:38:42 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/21 15:21:28 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 12:40:10 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	error2(char *msg, t_map *map, char *str)
 	}
 	free(map->game);
 	free(map->bg);
+	ft_free_images(map);
 	free(map);
 	free(str);
 	exit(EXIT_FAILURE);
@@ -69,6 +70,7 @@ void	error3(char *msg, t_map *map)
 	}
 	free(map->game);
 	free(map->bg);
+	ft_free_images(map);
 	free(map);
 	exit(EXIT_FAILURE);
 }
