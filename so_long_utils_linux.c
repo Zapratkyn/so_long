@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 11:54:53 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:59:36 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void	ft_win(t_map *map)
 		y++;
 	}
 	mlx_string_put(map->mlx_ptr, map->win_ptr, a, b, 0xFFFFFF, "YOU WIN !!!");
-	mlx_string_put(map->mlx_ptr, map->win_ptr, a - 15, b + 20, 0xFFFFFF, "PRESS Q TO QUIT");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, a - 15,
+		b + 20, 0xFFFFFF, "PRESS Q TO QUIT");
 	mlx_key_hook(map->win_ptr, deal_key_end, map);
 	mlx_loop(map->mlx_ptr);
 }

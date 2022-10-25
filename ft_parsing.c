@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 14:55:58 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 11:12:42 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 15:46:30 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_collectibles(t_map *map, int x, int y, char *str)
 		error2("Error", map, str);
 	temp->x = x;
 	temp->y = y;
+	temp->state = 1;
 	temp->next = NULL;
 	if (map->c == 1)
 		map->game->col = temp;

@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 12:48:50 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:57:38 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include	"MLX/mlx.h"
 
 # ifndef SIZE
-#  define SIZE 40
+#  define SIZE 64
 # endif
 
 typedef struct s_map	t_map;
@@ -47,15 +47,15 @@ struct s_map
 
 struct s_images
 {
-	char				*hero_1;
-	char				*hero_2;
-	char				*hero_3;
-	char				*hero_4;
-	char				*exit_closed;
-	char				*exit_open;
-	char				*wall;
-	char				*space;
-	char				*col;
+	void				*hero_1;
+	void				*hero_2;
+	void				*hero_3;
+	void				*hero_4;
+	void				*exit_closed;
+	void				*exit_open;
+	void				*wall;
+	void				*space;
+	void				*col;
 };
 
 struct s_bg
@@ -75,6 +75,7 @@ struct s_col
 {
 	int					x;
 	int					y;
+	int					state;
 	t_col				*next;
 };
 
@@ -109,10 +110,11 @@ struct s_exit
 // so_long.c
 t_map					*ft_map_init(char *str);
 // so_long_utils.c
-int						ft_move(int key, t_map *map);
+int						ft_move(int key, t_map *map, unsigned int key_press);
 void					ft_grid(t_map *map);
-void					ft_win(t_map *map);
-t_images				*images_init(void);
+void					ft_win(t_map *map, unsigned int key_press);
+void					images_init(t_map *map);
+void					ft_black(t_map *map);
 // get_info.c
 void					get_infos(t_map *map, int fd);
 void					ft_check_params(int fd, t_map *map);
@@ -122,7 +124,7 @@ void					error(char *msg);
 void					error2(char *msg, t_map *map, char *str);
 void					error3(char *msg, t_map *map);
 // ft_success.c
-void					ft_success(t_map *map);
+// void					ft_success(t_map *map);
 // ft_strchr_so_long.c
 void					ft_strchr_element(char *str, int y, char c, t_map *map);
 int						ft_strchr_walls_h(char *str);
@@ -131,7 +133,7 @@ int						ft_strchr_walls_v(char *str, t_map *map);
 void					ft_free_col(t_map *map);
 void					ft_free_wall(t_map *map);
 void					ft_free_space(t_map *map);
-int					ft_free_images(t_map *map);
+int						ft_free_images(t_map *map);
 // ft_parsing.c
 void					ft_collectibles(t_map *map, int x, int y, char *str);
 void					ft_hero(t_map *map, int x, int y, char *str);
@@ -144,9 +146,11 @@ void					ft_finder(t_map *map, int x, int y);
 void					ft_find(t_map *map, int x, int y);
 void					ft_draw(t_map *map);
 // ft_moves.c
-int 					ft_move_up(t_map *map);
-int 					ft_move_left(t_map *map);
-int 					ft_move_down(t_map *map);
-int 					ft_move_right(t_map *map);
+int						ft_move_up(t_map *map, unsigned int key_press);
+int						ft_move_left(t_map *map, unsigned int key_press);
+int						ft_move_down(t_map *map, unsigned int key_press);
+int						ft_move_right(t_map *map, unsigned int key_press);
+// ft_images.c
+char					*ft_open_image(char *file);
 
 #endif

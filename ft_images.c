@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_success.c                                       :+:      :+:    :+:   */
+/*   ft_images.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 12:33:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 16:11:15 by gponcele         ###   ########.fr       */
+/*   Created: 2022/10/25 13:45:27 by gponcele          #+#    #+#             */
+/*   Updated: 2022/10/25 14:32:03 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_success(t_map *map)
+char	*ft_open_image(char *file)
 {
-	ft_free_wall(map);
-	free(map->bg->wall);
-	if (map->bg->space->next)
-		ft_free_space(map);
-	free(map->bg->space);
-	if (map->game->col->next)
-		ft_free_col(map);
-	free(map->game->col);
-	free(map->game);
-	free(map->bg);
-	ft_free_images(map);
-	free(map->win_ptr);
-	free(map->mlx_ptr);
-	free(map);
-	exit(EXIT_SUCCESS);
+	char	*str;
+	char	*result;
+	int		fd;
+
+	result = NULL;
+	fd = open(file, O_RDONLY);
+	str = get_next_line(fd);
+	result = ft_strjoin(result, str);
+	if (!result)
+		return (0);
+	free(str);
+	while (str)
+	{
+		str = get_next_line(fd);
+		if (str)
+		{
+			result = ft_strjoin(result, str);
+			if (!result)
+				return (0);
+		}
+		free(str);
+	}
+	close(fd);
+	return (result);
 }

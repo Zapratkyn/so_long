@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 12:24:48 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 16:54:28 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_map	*map_init(void)
 	map->g = 0;
 	map->bg = malloc (sizeof(t_bg));
 	map->game = malloc (sizeof(t_game));
-	map->images = images_init();
+	map->images = malloc (sizeof(t_images));
 	if (!map || !map->bg || !map->game || !map->images)
 		return (0);
 	map->bg->wall = NULL;
@@ -62,7 +62,7 @@ int	deal_key(int key, t_map *map)
 	static unsigned int	key_press = 0;
 	char				*str;
 
-	if (ft_move(key, map) == 1)
+	if (ft_move(key, map, key_press) == 1)
 	{
 		key_press++;
 		ft_fill_square(map, 4, map->y, 0x000000);
@@ -93,6 +93,7 @@ int	main(int argc, char **argv)
 			(map->x * SIZE), ((map->y + 1) * SIZE), "So long");
 	if (!map || !map->mlx_ptr || !map->win_ptr)
 		exit(EXIT_FAILURE);
+	images_init(map);
 	ft_draw(map);
 	mlx_string_put(map->mlx_ptr, map->win_ptr, 10,
 		((map->y * SIZE) + 2), 0xFFFFFF, "Moves   :");
