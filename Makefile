@@ -6,7 +6,7 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:22:43 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/26 17:49:55 by gponcele         ###   ########.fr        #
+#    Updated: 2022/10/26 18:32:44 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC_LINUX				=	so_long.c get_info.c so_long_utils_linux.c ft_errors.c ft_strchr_
 							libft/ft_print_char.c libft/ft_print_nbr.c libft/ft_print_others.c libft/ft_printf.c \
 							libft/ft_putchar_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_putstr_fd.c \
 							libft/ft_strlen.c libft/get_next_line.c libft/get_next_line_utils.c libft/ft_itoa.c \
-							ft_strjoin.c ft_strcmp.c
+							ft_strjoin.c ft_strcmp.c libft/ft_strcmp.o libft/ft_strjoin.o
 SRC_BONUS				=	bonus/so_long_bonus.c get_info.c bonus/so_long_utils_bonus.c ft_errors.c ft_strchr_so_long.c ft_free.c \
 							ft_draw.c ft_parsing.c bonus/ft_moves_bonus.c ft_images.c bonus/ft_moves_utils_bonus.c
 LIBFT					=	./libft/libft.a
