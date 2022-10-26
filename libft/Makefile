@@ -6,13 +6,13 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:58:07 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/25 13:59:03 by gponcele         ###   ########.fr        #
+#    Updated: 2022/10/26 17:24:42 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS					=	ft_putnbr_fd.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c get_next_line.c \
 								get_next_line_utils.c ft_putendl_fd.c ft_printf.c ft_print_char.c \
-								ft_print_nbr.c ft_print_others.c ft_itoa.c ft_strjoin.c
+								ft_print_nbr.c ft_print_others.c ft_itoa.c ft_strjoin.c ft_strcmp.c
 OBJS					= 	$(SRCS:.c=.o)
 CC						= 	gcc
 RM						= 	rm -f

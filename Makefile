@@ -6,7 +6,7 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:22:43 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/26 16:53:39 by gponcele         ###   ########.fr        #
+#    Updated: 2022/10/26 17:49:55 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRC_LINUX				=	so_long.c get_info.c so_long_utils_linux.c ft_errors.c ft_strchr_
 							libft/ft_print_char.c libft/ft_print_nbr.c libft/ft_print_others.c libft/ft_printf.c \
 							libft/ft_putchar_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_putstr_fd.c \
 							libft/ft_strlen.c libft/get_next_line.c libft/get_next_line_utils.c libft/ft_itoa.c \
-							ft_strjoin.c
+							ft_strjoin.c ft_strcmp.c
 SRC_BONUS				=	bonus/so_long_bonus.c get_info.c bonus/so_long_utils_bonus.c ft_errors.c ft_strchr_so_long.c ft_free.c \
-							ft_draw.c ft_parsing.c bonus/ft_moves_bonus.c ft_images.c bonus/ft_menu.c bonus/ft_moves_utils_bonus.c
+							ft_draw.c ft_parsing.c bonus/ft_moves_bonus.c ft_images.c bonus/ft_moves_utils_bonus.c
 LIBFT					=	./libft/libft.a
 CC						=	gcc
 RM						=	rm -rf
@@ -30,8 +30,7 @@ CFLAGS					=	-Wall -Wextra -Werror
 OBJS_MAC				=	$(SRC_MAC:.c=.o)
 OBJS_LINUX				=	$(SRC_LINUX:.c=.o)
 OBJS_BONUS				=	$(SRC_BONUS:.c=.o)
-MLX						=	./MLX/libmlx.a
-LMLX_MAC				=	-framework OpenGL -framework AppKit
+LMLX_MAC				=	-lmlx -framework OpenGL -framework AppKit
 LMLX_LINUX				=	-lmlx -lXext -lX11
 
 all:
@@ -46,7 +45,7 @@ mac: $(OBJS_MAC)
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJS_BONUS)
-		$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(SRC_BONUS) $(LMLX_MAC) -o $(NAME_BONUS)
+		$(CC) $(CFLAGS) $(INCLUDES) $(LIBFT) $(LMLX_MAC) $(SRC_BONUS) -o $(NAME_BONUS)
 
 clean:
 		$(RM) $(OBJS_LINUX) $(OBJS_MAC) $(OBJS_BONUS)

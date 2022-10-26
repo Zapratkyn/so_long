@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:58:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 14:39:04 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:46:39 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,29 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	free(s1);
 	free(s2);
+	return (str);
+}
+
+char	*ft_strjoin_theme(char *s1, char *s2, char *s3)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*str;
+
+	str = malloc (sizeof(char) * (ft_strlen(s1)
+				+ ft_strlen(s2) + ft_strlen(s3) + 1));
+	if (!s1 || !s2 || !s3 || !str)
+		return (0);
+	i = -1;
+	j = -1;
+	k = -1;
+	while (s1[++i])
+		str[i] = s1[i];
+	while (s2[++j])
+		str[i++] = s2[j];
+	while (s3[++k])
+		str[i++] = s3[k];
+	str[i] = '\0';
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 15:57:31 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:30:46 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,14 @@ int	deal_key(int key, t_map *map)
 	return (0);
 }
 
-int	ft_click(t_map *map)
+int	ft_check_theme(char *str)
 {
-	if (mlx_destroy_window(map->mlx_ptr, map->win_ptr))
-		exit(EXIT_SUCCESS);
+	if (!ft_strcmp(str, "So_long"))
+		return (1);
+	else if (!ft_strcmp(str, "Zelda"))
+		return (1);
+	else if (!ft_strcmp(str, "Mario"))
+		return (1);
 	return (0);
 }
 
@@ -86,10 +90,12 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 
-	if (argc != 2)
-		error("Error\nEXPECTED FORMAT : ./so_long [map_path]");
+	if (argc != 3)
+		error("Error\nEXPECTED FORMAT : ./so_long [map_path] Theme");
+	if (!ft_check_theme(argv[2]))
+		error("Available themes :\nSo_long\nZelda\nMario");
 	map = ft_map(argv[1]);
-	map->theme = ft_menu();
+	map->theme = argv[2];
 	map->mlx_ptr = mlx_init();
 	map->win_ptr = mlx_new_window(map->mlx_ptr,
 			(map->x * SIZE), ((map->y + 1) * SIZE), "So long");
@@ -101,7 +107,6 @@ int	main(int argc, char **argv)
 		((map->y * SIZE) + 2), 0xFFFFFF, "Moves   :");
 	mlx_string_put(map->mlx_ptr, map->win_ptr,
 		(SIZE * 4) + 5, ((map->y * SIZE) + 2), 0xFFFFFF, "0");
-	mlx_mouse_hook(map->win_ptr, ft_click, map);
 	mlx_key_hook(map->win_ptr, deal_key, map);
 	mlx_loop(map->mlx_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 15:28:55 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 17:51:26 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_move_up(t_map *map, unsigned int key_press)
 	{
 		if (map->c == 0)
 		{
-			ft_printf("Moves : %d\n", ++key_press);
+			ft_win(map, key_press);
 			exit(EXIT_SUCCESS);
 		}
 		else
@@ -91,7 +91,7 @@ int	ft_move_left(t_map *map, unsigned int key_press)
 	{
 		if (map->c == 0)
 		{
-			ft_printf("Moves : %d\n", ++key_press);
+			ft_win(map, key_press);
 			exit(EXIT_SUCCESS);
 		}
 		else
@@ -137,7 +137,7 @@ int	ft_move_down(t_map *map, unsigned int key_press)
 	{
 		if (map->c == 0)
 		{
-			ft_printf("Moves : %d\n", ++key_press);
+			ft_win(map, key_press);
 			exit(EXIT_SUCCESS);
 		}
 		else
