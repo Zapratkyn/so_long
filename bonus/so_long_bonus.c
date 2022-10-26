@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 17:30:46 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:31:13 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int argc, char **argv)
 	if (argc != 3)
 		error("Error\nEXPECTED FORMAT : ./so_long [map_path] Theme");
 	if (!ft_check_theme(argv[2]))
-		error("Available themes :\nSo_long\nZelda\nMario");
+		error("Available themes :\n* So_long\n* Zelda\n* Mario\n(Spelling matters)");
 	map = ft_map(argv[1]);
 	map->theme = argv[2];
 	map->mlx_ptr = mlx_init();
