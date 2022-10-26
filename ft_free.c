@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:15:41 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 17:40:15 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:09:07 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,10 @@ int	ft_free_images(t_map *map)
 {
 	if (map->images)
 	{
-		if (map->images->hero_1)
-			free(map->images->hero_1);
-		if (map->images->hero_2)
-			free(map->images->hero_2);
-		if (map->images->hero_3)
-			free(map->images->hero_3);
-		if (map->images->hero_4)
-			free(map->images->hero_4);
-		if (map->images->exit_closed)
-			free(map->images->exit_closed);
-		if (map->images->exit_open)
-			free(map->images->exit_open);
+		if (map->images->hero)
+			free(map->images->hero);
+		if (map->images->exit)
+			free(map->images->exit);
 		if (map->images->wall)
 			free(map->images->wall);
 		if (map->images->space)

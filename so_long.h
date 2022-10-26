@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 18:42:42 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:50:42 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include	"./libft/libft.h"
-# include	"MLX/mlx.h"
+# include	"./MLX/mlx.h"
 
 # ifndef SIZE
 #  define SIZE 50
@@ -29,6 +29,7 @@ typedef struct s_space	t_space;
 typedef struct s_bg		t_bg;
 typedef struct s_game	t_game;
 typedef struct s_images	t_images;
+typedef struct s_menu	t_menu;
 
 struct s_map
 {
@@ -40,19 +41,23 @@ struct s_map
 	int					e;
 	int					p;
 	int					g;
+	int					d;
 	t_images			*images;
 	t_bg				*bg;
 	t_game				*game;
+	char				*theme;
+};
+
+struct	s_menu
+{
+	void				*win_ptr;
+	void				*mlx_ptr;
 };
 
 struct s_images
 {
-	void				*hero_1;
-	void				*hero_2;
-	void				*hero_3;
-	void				*hero_4;
-	void				*exit_closed;
-	void				*exit_open;
+	void				*hero;
+	void				*exit;
 	void				*wall;
 	void				*space;
 	void				*col;
@@ -111,7 +116,6 @@ struct s_exit
 t_map					*ft_map_init(char *str);
 // so_long_utils.c
 int						ft_move(int key, t_map *map, unsigned int key_press);
-void					ft_grid(t_map *map);
 void					ft_win(t_map *map, unsigned int key_press);
 void					images_init(t_map *map);
 void					ft_black(t_map *map);
@@ -150,7 +154,11 @@ int						ft_move_up(t_map *map, unsigned int key_press);
 int						ft_move_left(t_map *map, unsigned int key_press);
 int						ft_move_down(t_map *map, unsigned int key_press);
 int						ft_move_right(t_map *map, unsigned int key_press);
+// ft_moves.utils.c
+void					ft_redraw_game(t_map *map, int i, int x, int y);
 // ft_images.c
 char					*ft_open_image(char *file);
+// ft_menu.c
+char					*ft_menu(void);
 
 #endif

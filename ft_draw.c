@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:19:18 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 18:46:57 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 14:04:10 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,52 +38,41 @@ void	ft_fill_square(t_map *map, int x, int y, int color)
 void	ft_finder(t_map *map, int x, int y)
 {
 	t_col	*col;
-	t_space	*space;
 
 	col = map->game->col;
-	space = map->bg->space;
 	while (col)
 	{
 		if (x == col->x && y == col->y)
-		{
-			mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
-			mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->col, x * SIZE, y * SIZE);
-		}
+			mlx_put_image_to_window(map->mlx_ptr,
+				map->win_ptr, map->images->col, x * SIZE, y * SIZE);
 		col = col->next;
-	}
-	while (space)
-	{
-		if (x == space->x && y == space->y)
-			mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
-		space = space->next;
 	}
 }
 
 void	ft_find(t_map *map, int x, int y)
 {
 	t_wall	*wall;
+	t_col	*col;
 
 	wall = map->bg->wall;
+	col = map->game->col;
 	if (x == map->game->hero->x && y == map->game->hero->y)
-	{
-		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
-		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->hero_1, x * SIZE, y * SIZE);
-	}
+		mlx_put_image_to_window(map->mlx_ptr,
+			map->win_ptr, map->images->hero, x * SIZE, y * SIZE);
 	else if (x == map->bg->exit->x && y == map->bg->exit->y)
-		ft_fill_square(map, x, y, 0x0900FF);
+		mlx_put_image_to_window(map->mlx_ptr,
+			map->win_ptr, map->images->exit, x * SIZE, y * SIZE);
 	else
 	{
 		while (wall)
 		{
 			if (x == wall->x && y == wall->y)
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->space, x * SIZE, y * SIZE);
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->images->wall, x * SIZE, y * SIZE);
-			}
+				mlx_put_image_to_window(map->mlx_ptr,
+					map->win_ptr, map->images->wall, x * SIZE, y * SIZE);
 			wall = wall->next;
 		}
-		ft_finder(map, x, y);
 	}
+	ft_finder(map, x, y);
 }
 
 void	ft_draw(t_map *map)
@@ -98,9 +87,12 @@ void	ft_draw(t_map *map)
 		x = 0;
 		while (x <= map->x)
 		{
+			mlx_put_image_to_window(map->mlx_ptr,
+				map->win_ptr, map->images->space, x * SIZE, y * SIZE);
 			ft_find(map, x, y);
 			x++;
 		}
 		y++;
 	}
+	map->d = 1;
 }

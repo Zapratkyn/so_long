@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/25 18:46:11 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/26 14:28:04 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,14 @@
 
 int	ft_move(int key, t_map *map, unsigned int key_press)
 {
-	if (key == 13 || key == 126)
+	if (key == 13)
 		return (ft_move_up(map, key_press));
-	else if (key == 0 || key == 123)
+	else if (key == 0)
 		return (ft_move_left(map, key_press));
-	else if (key == 1 || key == 125)
+	else if (key == 1)
 		return (ft_move_down(map, key_press));
-	else if (key == 2 || key == 124)
+	else if (key == 2)
 		return (ft_move_right(map, key_press));
-	else if (key == 5)
-	{
-		if (map->g == 0)
-			ft_grid(map);
-		else
-		{
-			ft_draw(map);
-			map->g = 0;
-		}
-	}
 	else if (key == 53)
 	{
 		mlx_destroy_window(map->mlx_ptr, map->win_ptr);
@@ -40,113 +30,19 @@ int	ft_move(int key, t_map *map, unsigned int key_press)
 	return (0);
 }
 
-void	ft_grid(t_map *map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	map->g = 1;
-	while (x != (map->x * SIZE) || y != (map->y * SIZE))
-	{
-		x = 0;
-		while ((y % SIZE) == 0 && x != (map->x * SIZE))
-		{
-			mlx_pixel_put(map->mlx_ptr, map->win_ptr, x, y, 0xFFFFFF);
-			x++;
-		}
-		while ((y % SIZE) != 0 && x != (map->x * SIZE))
-		{
-			mlx_pixel_put(map->mlx_ptr, map->win_ptr, x, y, 0xFFFFFF);
-			x += SIZE;
-		}
-		y++;
-	}
-}
-
-void	ft_black(t_map *map)
-{
-	int		x;
-	int		y;
-
-	x = 0;
-	y = 0;
-	while (x < (map->x * SIZE) || y < (map->y * SIZE))
-	{
-		x = 0;
-		while (x <= (map->x * SIZE))
-		{
-			mlx_pixel_put(map->mlx_ptr, map->win_ptr, x, y, 0x000000);
-			x++;
-		}
-		y++;
-	}
-}
-
-int	deal_key_end(int key, t_map *map)
-{
-	if (key == 12)
-	{
-		mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-		exit(EXIT_SUCCESS);
-	}
-	return (0);
-}
-
-void	ft_win(t_map *map, unsigned int key_press)
-{
-	int		a;
-	int		b;
-	char	*str;
-
-	a = (SIZE * (map->x - 1)) / 2;
-	b = (SIZE * map->y) / 2;
-	ft_black(map);
-	mlx_string_put(map->mlx_ptr, map->win_ptr, a, b, 0xFFFFFF, "YOU WIN !!!");
-	mlx_string_put(map->mlx_ptr, map->win_ptr, a - 20,
-		b + 20, 0xFFFFFF, "PRESS Q TO QUIT");
-	ft_fill_square(map, 4, map->y, 0x000000);
-	ft_fill_square(map, 5, map->y, 0x000000);
-	str = ft_itoa(++key_press);
-	mlx_string_put(map->mlx_ptr, map->win_ptr,
-		(SIZE * 4) + 5, ((map->y * SIZE) + 2), 0xFFFFFF, str);
-	mlx_key_hook(map->win_ptr, deal_key_end, map);
-	mlx_loop(map->mlx_ptr);
-}
-
-// t_img	*ft_img_init(t_map *map)
-// {
-// 	t_img	*temp;
-// 	int		size;
-	
-// 	size = 1 * SIZE;
-// 	temp = malloc (sizeof(t_img));
-// 	if (!temp)
-// 		error3("Error", map);
-// 	temp->img = NULL;
-// 	temp->height = size;
-// 	temp->width = size;
-// 	return (temp);
-// }
-
 void	images_init(t_map *map)
 {
 	int	size;
 
 	size = 1 * SIZE;
-	map->images->hero_1 = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->hero_1 = mlx_xpm_file_to_image(map->mlx_ptr, "./images/hero.xpm", &size, &size);
-	// ft_printf("%d\n", map->images->hero_1->width);
-	// map->images->hero_2 = mlx_new_image(map->mlx_ptr, size, size);
-	// map->images->hero_3 = mlx_new_image(map->mlx_ptr, size, size);
-	// map->images->hero_4 = mlx_new_image(map->mlx_ptr, size, size);
-	// map->images->exit_closed = mlx_new_image(map->mlx_ptr, size, size);
-	// map->images->exit_open = mlx_new_image(map->mlx_ptr, size, size);
+	map->images->hero = mlx_new_image(map->mlx_ptr, size, size);
+	map->images->hero = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Hero_3.xpm", &size, &size);
+	map->images->exit = mlx_new_image(map->mlx_ptr, size, size);
+	map->images->exit = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Exit_closed.xpm", &size, &size);
 	map->images->wall = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Pixel_crawler/Buisson.xpm", &size, &size);
+	map->images->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Wall.xpm", &size, &size);
 	map->images->space = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->space = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Pixel_crawler/Sol.xpm", &size, &size);
+	map->images->space = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Ground.xpm", &size, &size);
 	map->images->col = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->col = mlx_xpm_file_to_image(map->mlx_ptr, "./images/col.xpm", &size, &size);
+	map->images->col = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Col.xpm", &size, &size);
 }
