@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 14:28:04 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:22:34 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	images_init(t_map *map)
 
 	size = 1 * SIZE;
 	map->images->hero = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->hero = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Hero_3.xpm", &size, &size);
+	map->images->hero = mlx_xpm_file_to_image(map->mlx_ptr, "./images/So_long/Hero_3.xpm", &size, &size);
 	map->images->exit = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->exit = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Exit_closed.xpm", &size, &size);
+	map->images->exit = mlx_xpm_file_to_image(map->mlx_ptr, "./images/So_long/Exit_closed.xpm", &size, &size);
 	map->images->wall = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Wall.xpm", &size, &size);
+	map->images->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./images/So_long/Wall.xpm", &size, &size);
 	map->images->space = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->space = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Ground.xpm", &size, &size);
+	map->images->space = mlx_xpm_file_to_image(map->mlx_ptr, "./images/So_long/Ground.xpm", &size, &size);
 	map->images->col = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->col = mlx_xpm_file_to_image(map->mlx_ptr, "./images/Zelda/Col.xpm", &size, &size);
+	map->images->col = mlx_xpm_file_to_image(map->mlx_ptr, "./images/So_long/Col.xpm", &size, &size);
 }
