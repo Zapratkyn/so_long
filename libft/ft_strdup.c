@@ -1,33 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 18:07:27 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/01 16:31:02 by gponcele         ###   ########.fr       */
+/*   Created: 2022/11/01 13:58:10 by gponcele          #+#    #+#             */
+/*   Updated: 2022/11/01 16:31:44 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+char	*ft_strdup(char *str)
 {
-	int	i;
+	char	*result;
+	int		i;
 
 	i = 0;
-	while (s[i])
+	result = malloc (sizeof(char) * (ft_strlen(str) + 1));
+	if (!result)
+		return (0);
+	while (str[i])
+	{
+		result[i] = str[i];
 		i++;
-	return (i);
+	}
+	result[i] = '\0';
+	return (result);
 }
 
-int	ft_strlen_i(int *str)
+int	*ft_strdup_int(int *str)
 {
+	int	*result;
 	int	i;
 
 	i = 0;
+	result = malloc (sizeof(int) * (ft_strlen_i(str) + 1));
+	if (!result)
+		return (0);
 	while (str[i])
+	{
+		result[i] = str[i];
 		i++;
-	return (i);
+	}
+	result[i] = '\0';
+	return (result);
 }

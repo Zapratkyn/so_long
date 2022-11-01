@@ -6,11 +6,17 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 12:22:39 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 16:03:01 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 13:32:51 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_len(t_map *map, char *str)
+{
+	if ((ft_strlen(str) - 1) != map->x)
+		error2("Error\nWrong map shape", map, str);
+}
 
 void	get_infos(t_map *map, int fd)
 {
@@ -20,6 +26,7 @@ void	get_infos(t_map *map, int fd)
 
 	str = get_next_line(fd);
 	map->x = (ft_strlen(str) - 1);
+	map->map = str;
 	if (!ft_strchr_walls_h(str))
 		error2("Error\nMap is not surrounded by walls.", map, str);
 	get_element(str, map, y++);
@@ -28,8 +35,8 @@ void	get_infos(t_map *map, int fd)
 	{
 		free(str);
 		str = next;
-		if ((ft_strlen(str) - 1) != map->x)
-			error2("Error\nWrong map shape", map, str);
+		check_len(map, str);
+		map->map = ft_strjoin(map->map, str);
 		get_element(str, map, y++);
 		next = get_next_line(fd);
 	}

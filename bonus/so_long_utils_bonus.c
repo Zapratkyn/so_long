@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 15:46:43 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 13:30:13 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,27 @@ int	deal_key_end(int key, t_map *map)
 	return (0);
 }
 
-void	ft_win(t_map *map, unsigned int key_press)
+void	ft_end(t_map *map, unsigned int key_press, int i)
 {
-	int		a;
-	int		b;
 	char	*str;
 
-	a = (SIZE * (map->x - 1)) / 2;
-	b = (SIZE * map->y) / 2;
-	ft_black(map);
-	mlx_string_put(map->mlx_ptr, map->win_ptr, a, b, 0xFFFFFF, "YOU WIN !!!");
-	mlx_string_put(map->mlx_ptr, map->win_ptr, a - 20,
-		b + 20, 0xFFFFFF, "PRESS Q TO QUIT");
-	ft_fill_square(map, 4, map->y, 0x000000);
-	ft_fill_square(map, 5, map->y, 0x000000);
-	str = ft_itoa(++key_press);
-	mlx_string_put(map->mlx_ptr, map->win_ptr,
-		(SIZE * 4) + 5, ((map->y * SIZE) + 2), 0xFFFFFF, str);
+	mlx_destroy_window(map->mlx_ptr, map->win_ptr);
+	map->win_ptr = mlx_new_window(map->mlx_ptr, 500, 500, "So_long");
+	if (i == 0)
+		mlx_string_put(map->mlx_ptr, map->win_ptr,
+			200, 200, 0xFFFFFF, "YOU LOSE...");
+	if (i == 1)
+	{
+		mlx_string_put(map->mlx_ptr, map->win_ptr,
+			200, 200, 0xFFFFFF, "YOU WIN !!!");
+		str = ft_itoa(++key_press);
+		mlx_string_put(map->mlx_ptr, map->win_ptr,
+			200, 240, 0xFFFFFF, "Moves :");
+		mlx_string_put(map->mlx_ptr, map->win_ptr,
+			275, 240, 0xFFFFFF, str);
+	}
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 180,
+		220, 0xFFFFFF, "PRESS Q TO QUIT");
 	mlx_key_hook(map->win_ptr, deal_key_end, map);
 	mlx_loop(map->mlx_ptr);
 }

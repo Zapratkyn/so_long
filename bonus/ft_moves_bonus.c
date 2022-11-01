@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 16:10:11 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:25:17 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_move_up(t_map *map, unsigned int key_press)
 	while (trap)
 	{
 		if (x == trap->x && y == (trap->y + 1))
-			ft_lost(map, key_press);
+			ft_end(map, key_press, 0);
 		trap = trap->next;
 	}
 	while (col)
@@ -52,7 +52,7 @@ int	ft_move_up(t_map *map, unsigned int key_press)
 	if (x == map->bg->exit->x && y == (map->bg->exit->y + 1))
 	{
 		if (map->c == 0)
-			ft_win(map, key_press);
+			ft_end(map, key_press, 1);
 		else
 			return (0);
 	}
@@ -86,7 +86,7 @@ int	ft_move_left(t_map *map, unsigned int key_press)
 	while (trap)
 	{
 		if (x == (trap->x + 1) && y == trap->y)
-			ft_lost(map, key_press);
+			ft_end(map, key_press, 0);
 		trap = trap->next;
 	}
 	while (col)
@@ -103,7 +103,7 @@ int	ft_move_left(t_map *map, unsigned int key_press)
 	if (x == (map->bg->exit->x + 1) && y == map->bg->exit->y)
 	{
 		if (map->c == 0)
-			ft_win(map, key_press);
+			ft_end(map, key_press, 1);
 		else
 			return (0);
 	}
@@ -137,7 +137,7 @@ int	ft_move_down(t_map *map, unsigned int key_press)
 	while (trap)
 	{
 		if (x == trap->x && y == (trap->y - 1))
-			ft_lost(map, key_press);
+			ft_end(map, key_press, 0);
 		trap = trap->next;
 	}
 	while (col)
@@ -154,7 +154,7 @@ int	ft_move_down(t_map *map, unsigned int key_press)
 	if (x == map->bg->exit->x && y == (map->bg->exit->y - 1))
 	{
 		if (map->c == 0)
-			ft_win(map, key_press);
+			ft_end(map, key_press, 1);
 		else
 			return (0);
 	}
@@ -188,7 +188,7 @@ int	ft_move_right(t_map *map, unsigned int key_press)
 	while (trap)
 	{
 		if (x == (trap->x - 1) && y == trap->y)
-			ft_lost(map, key_press);
+			ft_end(map, key_press, 0);
 		trap = trap->next;
 	}
 	while (col)
@@ -205,7 +205,7 @@ int	ft_move_right(t_map *map, unsigned int key_press)
 	if (x == (map->bg->exit->x - 1) && y == map->bg->exit->y)
 	{
 		if (map->c == 0)
-			ft_win(map, key_press);
+			ft_end(map, key_press, 1);
 		else
 			return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/01 12:11:29 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:56:38 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_map	*ft_map(char *str)
 	if (map->x == map->y)
 		error3("Error\nThe map is a square.", map);
 	if (map->c < 1 || map->e != 1 || map->p != 1)
-		error3("Error\nSome elements are missing or several.", map);
+		error3("Error\nSome elements are missing or too many.", map);
 	if (map->x > 51 || map->y > 25)
 		error3("Error\nThe map is too big for the screen.", map);
 	// ft_check_paths(map);

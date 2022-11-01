@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:38:42 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 16:42:55 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 13:26:30 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,41 @@ void	error(int i)
 		ft_putendl_fd("Available themes :\n* So_long", 2);
 		ft_putendl_fd("* Zelda\n* Mario\n(Spelling matters)", 2);
 	}
+	if (i == 3)
+		ft_putendl_fd("Error\nEXPECTED FORMAT : ./so_long [map_path]", 2);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_free_rest2(t_map *map, char *msg, char *str)
+{
+	ft_putendl_fd(msg, 2);
+	free(str);
+	free(map->mlx_ptr);
+	free(map->win_ptr);
+	free(map->t);
+	free(map->bg);
+	free(map->game);
+	free(map->map);
+	free(map);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_free_rest3(t_map *map, char *msg)
+{
+	ft_putendl_fd(msg, 2);
+	free(map->mlx_ptr);
+	free(map->win_ptr);
+	free(map->t);
+	free(map->bg);
+	free(map->game);
+	free(map->images);
+	free(map->map);
+	free(map);
 	exit(EXIT_FAILURE);
 }
 
 void	error2(char *msg, t_map *map, char *str)
 {
-	ft_putendl_fd(msg, 2);
 	if (map->game->col)
 	{
 		if (map->game->col->next)
@@ -45,16 +74,17 @@ void	error2(char *msg, t_map *map, char *str)
 			ft_free_space(map);
 		free(map->bg->space);
 	}
-	ft_free_rest(map);
-	free(map->images);
-	free(map);
-	free(str);
-	exit(EXIT_FAILURE);
+	if (map->bg->trap)
+	{
+		if (map->bg->trap->next)
+			ft_free_trap(map);
+		free(map->bg->trap);
+	}
+	ft_free_rest2(map, msg, str);
 }
 
 void	error3(char *msg, t_map *map)
 {
-	ft_putendl_fd(msg, 2);
 	if (map->game->col)
 	{
 		if (map->game->col->next)
@@ -73,8 +103,11 @@ void	error3(char *msg, t_map *map)
 			ft_free_space(map);
 		free(map->bg->space);
 	}
-	ft_free_rest(map);
-	free(map->images);
-	free(map);
-	exit(EXIT_FAILURE);
+	if (map->bg->trap)
+	{
+		if (map->bg->trap->next)
+			ft_free_trap(map);
+		free(map->bg->trap);
+	}
+	ft_free_rest3(map, msg);
 }

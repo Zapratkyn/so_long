@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:00:09 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 11:48:10 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:38:34 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,19 @@ char								*ft_strjoin(char *s1, char *s2);
 char								*ft_strjoin_gnl(char *s1, char *s2);
 char								*ft_strchr(char *s, int c);
 char								*get_next_line(int fd);
+void								ft_bzero(char *str, int k);
+void								ft_bzero_int(int *str, int k);
 void								ft_putendl_fd(char *s, int fd);
 int									ft_printf(const char *s, ...);
 int									ft_formats(va_list ap, const char format);
 int									ft_check_formats(char c, char *set);
 int									ft_print_str(char *str);
+char								*ft_strdup(char *str);
+int									*ft_strdup_int(int *str);
 int									ft_print_percent(void);
 int									ft_print_char(char c);
 int									ft_strlen_int(int n);
+int									ft_strlen_i(int *str);
 int									ft_strcmp(const char *s1, const char *s2);
 char								*ft_itoa_printf(int n);
 char								*ft_strjoin2(char *s1,

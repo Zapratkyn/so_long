@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/01 12:10:57 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:34:14 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ struct s_map
 	void				*win_ptr;
 	void				*mlx_ptr;
 	int					c;
+	int					c_copy;
 	int					e;
 	int					p;
 	int					g;
+	char				*map;
 	t_images			*images;
 	t_bg				*bg;
 	t_game				*game;
@@ -118,7 +120,7 @@ struct s_exit
 t_map					*ft_map_init(char *str);
 // so_long_utils.c
 int						ft_move(int key, t_map *map, unsigned int key_press);
-void					ft_win(t_map *map, unsigned int key_press);
+void					ft_end(t_map *map, unsigned int key_press, int i);
 void					images_init(t_map *map);
 void					ft_black(t_map *map);
 // so_long_utils_bonus.c
@@ -138,7 +140,7 @@ void					ft_strchr_element(char *str, int y, char c, t_map *map);
 int						ft_strchr_walls_h(char *str);
 int						ft_strchr_walls_v(char *str, t_map *map);
 // ft_free.c
-void					ft_free_rest(t_map *map);
+void					ft_free_trap(t_map *map);
 void					ft_free_col(t_map *map);
 void					ft_free_wall(t_map *map);
 void					ft_free_space(t_map *map);
@@ -168,8 +170,7 @@ void					ft_draw_menu(t_map *map);
 int						deal_key_menu(int key, t_map *map);
 // ft_others.c
 void					ft_trap(t_map *map, int x, int y, char *str);
-void					ft_lost(t_map *map, unsigned int key_press);
 int						ft_close_click(int keycode, t_game *game);
-void					ft_check_paths(t_map *map);
+int						ft_path_check(t_map *map, int l);
 
 #endif
