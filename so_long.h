@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 16:50:42 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:37:41 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_hero	t_hero;
 typedef struct s_exit	t_exit;
 typedef struct s_wall	t_wall;
 typedef struct s_space	t_space;
+typedef struct s_trap	t_trap;
 typedef struct s_bg		t_bg;
 typedef struct s_game	t_game;
 typedef struct s_images	t_images;
-typedef struct s_menu	t_menu;
 
 struct s_map
 {
@@ -45,13 +45,7 @@ struct s_map
 	t_images			*images;
 	t_bg				*bg;
 	t_game				*game;
-	char				*theme;
-};
-
-struct	s_menu
-{
-	void				*win_ptr;
-	void				*mlx_ptr;
+	char				*t;
 };
 
 struct s_images
@@ -61,6 +55,7 @@ struct s_images
 	void				*wall;
 	void				*space;
 	void				*col;
+	void				*trap;
 };
 
 struct s_bg
@@ -68,6 +63,7 @@ struct s_bg
 	t_space				*space;
 	t_exit				*exit;
 	t_wall				*wall;
+	t_trap				*trap;
 };
 
 struct s_game
@@ -105,6 +101,13 @@ struct s_space
 	t_space				*next;
 };
 
+struct s_trap
+{
+	int					x;
+	int					y;
+	t_trap				*next;
+};
+
 struct s_exit
 {
 	int					x;
@@ -119,12 +122,14 @@ int						ft_move(int key, t_map *map, unsigned int key_press);
 void					ft_win(t_map *map, unsigned int key_press);
 void					images_init(t_map *map);
 void					ft_black(t_map *map);
+// so_long_utils_bonus.c
+int						deal_key_end(int key, t_map *map);
 // get_info.c
 void					get_infos(t_map *map, int fd);
 void					ft_check_params(int fd, t_map *map);
 void					get_element(char *str, t_map *map, int y);
 // ft_errors.c
-void					error(char *msg);
+void					error(int i);
 void					error2(char *msg, t_map *map, char *str);
 void					error3(char *msg, t_map *map);
 // ft_success.c
@@ -134,6 +139,7 @@ void					ft_strchr_element(char *str, int y, char c, t_map *map);
 int						ft_strchr_walls_h(char *str);
 int						ft_strchr_walls_v(char *str, t_map *map);
 // ft_free.c
+void					ft_free_rest(t_map *map);
 void					ft_free_col(t_map *map);
 void					ft_free_wall(t_map *map);
 void					ft_free_space(t_map *map);
@@ -159,6 +165,12 @@ void					ft_redraw_game(t_map *map, int i, int x, int y);
 // ft_images.c
 char					*ft_open_image(char *file);
 // ft_menu.c
-char					*ft_menu(void);
+void					ft_draw_menu(t_map *map);
+int						deal_key_menu(int key, t_map *map);
+// ft_others.c
+void					ft_trap(t_map *map, int x, int y, char *str);
+void					ft_lost(t_map *map, unsigned int key_press);
+int						ft_close_click(int keycode, t_game *game);
+void					ft_check_paths(t_map *map);
 
 #endif

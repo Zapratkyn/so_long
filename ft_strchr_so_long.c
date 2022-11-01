@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:30:54 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/21 16:45:05 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:29:48 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	ft_strchr_element(char *str, int y, char c, t_map *map)
 				ft_wall(map, i, y, str);
 			else if (c == '0')
 				ft_space(map, i, y, str);
+			else if (c == 'T')
+				ft_trap(map, i, y, str);
 		}
 		i++;
 	}

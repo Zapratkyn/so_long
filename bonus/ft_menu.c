@@ -6,32 +6,40 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 11:40:04 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 16:44:28 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 11:52:55 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-char	*str;
-
-char	*ft_theme(t_menu *menu, int i)
+void	ft_theme(t_map *map, int i)
 {
 	if (i == 1)
-		return ("So_long");
+		map->t = "So_long";
 	else if (i == 2)
-		return ("Zelda");
+		map->t = "Zelda";
 	else if (i == 3)
-		return ("Mario");
+		map->t = "Mario";
 	else if (i == 4)
 	{
-		mlx_destroy_window(menu->mlx_ptr, menu->win_ptr);
-		free(menu);
+		mlx_destroy_window(map->mlx_ptr, map->win_ptr);
 		exit(EXIT_SUCCESS);
 	}
-	return (0);
+	mlx_destroy_window(map->mlx_ptr, map->win_ptr);
+	map->win_ptr = mlx_new_window(map->mlx_ptr,
+			(map->x * SIZE), ((map->y + 1) * SIZE), "So long");
+	if (!map->win_ptr)
+		exit (EXIT_FAILURE);
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 10,
+		((map->y * SIZE) + 2), 0xFFFFFF, "Moves   :");
+	mlx_string_put(map->mlx_ptr, map->win_ptr,
+		(SIZE * 4) + 5, ((map->y * SIZE) + 2), 0xFFFFFF, "0");
+	images_init(map);
+	ft_draw(map);
+	map->m = 0;
 }
 
-void	ft_navigate(t_menu *menu, int i, int k)
+void	ft_navigate(t_map *map, int k)
 {
 	int	x;
 	int	y;
@@ -43,46 +51,28 @@ void	ft_navigate(t_menu *menu, int i, int k)
 		x = 150;
 		while (x < 200)
 		{
-			mlx_pixel_put(menu->mlx_ptr, menu->win_ptr, x, y, 0x000000);
+			mlx_pixel_put(map->mlx_ptr, map->win_ptr, x, y, 0x000000);
 			x++;
 		}
 		y++;
 	}
-	if (i == 1)
-		mlx_string_put(menu->mlx_ptr, menu->win_ptr, 150, k, 0xFFFFFF, "=>");
-	else if (i == 2)
-		mlx_string_put(menu->mlx_ptr, menu->win_ptr, 150, k, 0xFFFFFF, "=>");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 150, k, 0xFFFFFF, "=>");
 }
 
-void	ft_draw_menu(t_menu *menu)
+void	ft_draw_menu(t_map *map)
 {
-	int	x;
-	int	y;
-	int	size;
-
-	x = 0;
-	y = 0;
-	size = 50;
-	while (x < 500 || y < 500)
-	{
-		x = 0;
-		while (x < 500)
-		{
-			mlx_pixel_put(menu->mlx_ptr, menu->win_ptr, x, y, 0x000000);
-			x++;
-		}
-		y++;
-	}
-	mlx_string_put(menu->mlx_ptr, menu->win_ptr, 150, 150, 0xFFFFFF, "PICK A THEME");
-	mlx_string_put(menu->mlx_ptr, menu->win_ptr, 200, 180, 0xFFFFFF, "SO_LONG");
-	mlx_string_put(menu->mlx_ptr, menu->win_ptr, 200, 210, 0xFFFFFF, "ZELDA");
-	mlx_string_put(menu->mlx_ptr, menu->win_ptr, 200, 240, 0xFFFFFF, "MARIO");
-	mlx_string_put(menu->mlx_ptr, menu->win_ptr, 200, 270, 0xFFFFFF, "QUIT");
-	mlx_string_put(menu->mlx_ptr, menu->win_ptr, 150, 450, 0xFFFFFF, "Press SPACE to confirm");
-	mlx_string_put(menu->mlx_ptr, menu->win_ptr, 150, 180, 0xFFFFFF, "=>");
+	mlx_string_put(map->mlx_ptr, map->win_ptr,
+		150, 150, 0xFFFFFF, "PICK A THEME");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 200, 180, 0xFFFFFF, "SO_LONG");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 200, 210, 0xFFFFFF, "ZELDA");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 200, 240, 0xFFFFFF, "MARIO");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 200, 270, 0xFFFFFF, "QUIT");
+	mlx_string_put(map->mlx_ptr, map->win_ptr,
+		150, 450, 0xFFFFFF, "Press SPACE to confirm");
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 150, 180, 0xFFFFFF, "=>");
 }
 
-int	deal_key_menu(int key, t_menu *menu)
+int	deal_key_menu(int key, t_map *map)
 {
 	static int	i = 1;
 	static int	y = 177;
@@ -90,43 +80,16 @@ int	deal_key_menu(int key, t_menu *menu)
 	if ((key == 1 || key == 125) && i < 4)
 	{
 		y += 30;
-		ft_navigate(menu, 1, y);
+		ft_navigate(map, y);
 		i++;
 	}
 	else if ((key == 13 || key == 126) && i > 1)
 	{
 		y -= 30;
-		ft_navigate(menu, 2, y);
+		ft_navigate(map, y);
 		i--;
 	}
 	else if (key == 49)
-	{
-		str = ft_theme(menu, i);
-		mlx_destroy_window(menu->mlx_ptr, menu->win_ptr);
-		mlx_loop_end(menu->mlx_ptr);
-	}
+		ft_theme(map, i);
 	return (0);
-}
-
-char	*ft_menu(void)
-{
-	t_menu	*menu;
-	int		i;
-
-	i = 0;
-	menu = malloc (sizeof(t_menu));
-	if (!menu)
-		exit(EXIT_FAILURE);
-	menu->mlx_ptr = NULL;
-	menu->win_ptr = NULL;
-	menu->mlx_ptr = mlx_init();
-	menu->win_ptr = mlx_new_window(menu->mlx_ptr,
-			500, 500, "So long");
-	if (!menu->mlx_ptr || !menu->win_ptr)
-		exit(EXIT_FAILURE);
-	ft_draw_menu(menu);
-	mlx_key_hook(menu->win_ptr, deal_key_menu, menu);
-	mlx_loop(menu->mlx_ptr);
-	free(menu);
-	return (str);
 }

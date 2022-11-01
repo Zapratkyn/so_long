@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:00:09 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 17:41:02 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 11:48:10 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int									ft_print_char(char c);
 int									ft_strlen_int(int n);
 int									ft_strcmp(const char *s1, const char *s2);
 char								*ft_itoa_printf(int n);
-char								*ft_strjoin_theme(char *s1,
+char								*ft_strjoin2(char *s1,
 										char *s2, char *s3);
 int									ft_print_nbr(int nb);
 char								*ft_itoa(int n);

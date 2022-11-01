@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 14:49:59 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:34:37 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_map	*map_init(void)
 	map->y = 0;
 	map->win_ptr = NULL;
 	map->mlx_ptr = NULL;
-	map->theme = NULL;
+	map->t = NULL;
 	map->c = 0;
 	map->e = 0;
 	map->p = 0;
@@ -53,6 +53,8 @@ t_map	*ft_map(char *str)
 	close(fd);
 	if (map->x == map->y)
 		error3("Error\nThe map is a square.", map);
+	if (map->x > 52 || map->y > 25)
+		error3("Error\nThe map is too big for the screen.", map);
 	// if (!ft_check_paths(map))
 	// 	error3("Error\nUnreachable item or exit.", map);
 	return (map);
@@ -77,18 +79,15 @@ int	main(int argc, char **argv)
 	t_map	*map;
 
 	if (argc != 2)
-		error("Error\nEXPECTED FORMAT : ./so_long [map_path]");
+		error(1);
 	map = ft_map(argv[1]);
 	map->mlx_ptr = mlx_init();
 	map->win_ptr = mlx_new_window(map->mlx_ptr,
 			(map->x * SIZE), (map->y * SIZE), "So long");
 	if (!map || !map->mlx_ptr || !map->win_ptr)
 		exit(EXIT_FAILURE);
-	if (map->d == 0)
-	{
-		images_init(map);
-		ft_draw(map);
-	}
+	images_init(map);
+	ft_draw(map);
 	mlx_key_hook(map->win_ptr, deal_key, map);
 	mlx_loop(map->mlx_ptr);
 }

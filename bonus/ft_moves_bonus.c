@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/27 17:29:15 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 16:10:11 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_move_up(t_map *map, unsigned int key_press)
 {
 	t_wall	*wall;
 	t_col	*col;
+	t_trap	*trap;
 	int		x;
 	int		y;
 
@@ -23,12 +24,19 @@ int	ft_move_up(t_map *map, unsigned int key_press)
 	y = map->game->hero->y;
 	wall = map->bg->wall;
 	col = map->game->col;
+	trap = map->bg->trap;
 	ft_redraw_game(map, 1, x, y);
 	while (wall)
 	{
 		if (x == wall->x && y == (wall->y + 1))
 			return (0);
 		wall = wall->next;
+	}
+	while (trap)
+	{
+		if (x == trap->x && y == (trap->y + 1))
+			ft_lost(map, key_press);
+		trap = trap->next;
 	}
 	while (col)
 	{
@@ -44,10 +52,7 @@ int	ft_move_up(t_map *map, unsigned int key_press)
 	if (x == map->bg->exit->x && y == (map->bg->exit->y + 1))
 	{
 		if (map->c == 0)
-		{
 			ft_win(map, key_press);
-			exit(EXIT_SUCCESS);
-		}
 		else
 			return (0);
 	}
@@ -62,6 +67,7 @@ int	ft_move_left(t_map *map, unsigned int key_press)
 {
 	t_wall	*wall;
 	t_col	*col;
+	t_trap	*trap;
 	int		x;
 	int		y;
 
@@ -69,12 +75,19 @@ int	ft_move_left(t_map *map, unsigned int key_press)
 	y = map->game->hero->y;
 	wall = map->bg->wall;
 	col = map->game->col;
+	trap = map->bg->trap;
 	ft_redraw_game(map, 4, x, y);
 	while (wall)
 	{
 		if (x == (wall->x + 1) && y == wall->y)
 			return (0);
 		wall = wall->next;
+	}
+	while (trap)
+	{
+		if (x == (trap->x + 1) && y == trap->y)
+			ft_lost(map, key_press);
+		trap = trap->next;
 	}
 	while (col)
 	{
@@ -90,10 +103,7 @@ int	ft_move_left(t_map *map, unsigned int key_press)
 	if (x == (map->bg->exit->x + 1) && y == map->bg->exit->y)
 	{
 		if (map->c == 0)
-		{
 			ft_win(map, key_press);
-			exit(EXIT_SUCCESS);
-		}
 		else
 			return (0);
 	}
@@ -108,6 +118,7 @@ int	ft_move_down(t_map *map, unsigned int key_press)
 {
 	t_wall	*wall;
 	t_col	*col;
+	t_trap	*trap;
 	int		x;
 	int		y;
 
@@ -115,12 +126,19 @@ int	ft_move_down(t_map *map, unsigned int key_press)
 	y = map->game->hero->y;
 	wall = map->bg->wall;
 	col = map->game->col;
+	trap = map->bg->trap;
 	ft_redraw_game(map, 3, x, y);
 	while (wall)
 	{
 		if (x == wall->x && y == (wall->y - 1))
 			return (0);
 		wall = wall->next;
+	}
+	while (trap)
+	{
+		if (x == trap->x && y == (trap->y - 1))
+			ft_lost(map, key_press);
+		trap = trap->next;
 	}
 	while (col)
 	{
@@ -136,10 +154,7 @@ int	ft_move_down(t_map *map, unsigned int key_press)
 	if (x == map->bg->exit->x && y == (map->bg->exit->y - 1))
 	{
 		if (map->c == 0)
-		{
 			ft_win(map, key_press);
-			exit(EXIT_SUCCESS);
-		}
 		else
 			return (0);
 	}
@@ -154,6 +169,7 @@ int	ft_move_right(t_map *map, unsigned int key_press)
 {
 	t_wall	*wall;
 	t_col	*col;
+	t_trap	*trap;
 	int		x;
 	int		y;
 
@@ -161,12 +177,19 @@ int	ft_move_right(t_map *map, unsigned int key_press)
 	y = map->game->hero->y;
 	wall = map->bg->wall;
 	col = map->game->col;
+	trap = map->bg->trap;
 	ft_redraw_game(map, 2, x, y);
 	while (wall)
 	{
 		if (x == (wall->x - 1) && y == wall->y)
 			return (0);
 		wall = wall->next;
+	}
+	while (trap)
+	{
+		if (x == (trap->x - 1) && y == trap->y)
+			ft_lost(map, key_press);
+		trap = trap->next;
 	}
 	while (col)
 	{
@@ -182,10 +205,7 @@ int	ft_move_right(t_map *map, unsigned int key_press)
 	if (x == (map->bg->exit->x - 1) && y == map->bg->exit->y)
 	{
 		if (map->c == 0)
-		{
-			ft_printf("Moves : %d\n", ++key_press);
-			exit(EXIT_SUCCESS);
-		}
+			ft_win(map, key_press);
 		else
 			return (0);
 	}

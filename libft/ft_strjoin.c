@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:58:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 17:46:39 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 11:39:51 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_strjoin_theme(char *s1, char *s2, char *s3)
+char	*ft_strjoin2(char *s1, char *s2, char *s3)
 {
 	int		i;
 	int		j;

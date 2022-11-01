@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 18:31:13 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:37:14 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_map	*map_init(void)
 	map->y = 0;
 	map->win_ptr = NULL;
 	map->mlx_ptr = NULL;
-	map->theme = NULL;
+	map->t = NULL;
 	map->c = 0;
 	map->e = 0;
 	map->p = 0;
@@ -53,8 +53,11 @@ t_map	*ft_map(char *str)
 	close(fd);
 	if (map->x == map->y)
 		error3("Error\nThe map is a square.", map);
-	// if (!ft_check_paths(map))
-	// 	error3("Error\nUnreachable item or exit.", map);
+	if (map->c < 1 || map->e != 1 || map->p != 1)
+		error3("Error\nSome elements are missing or several.", map);
+	if (map->x > 51 || map->y > 25)
+		error3("Error\nThe map is too big for the screen.", map);
+	ft_check_paths(map)
 	return (map);
 }
 
@@ -91,11 +94,11 @@ int	main(int argc, char **argv)
 	t_map	*map;
 
 	if (argc != 3)
-		error("Error\nEXPECTED FORMAT : ./so_long [map_path] Theme");
+		error(1);
 	if (!ft_check_theme(argv[2]))
-		error("Available themes :\n* So_long\n* Zelda\n* Mario\n(Spelling matters)");
+		error(2);
 	map = ft_map(argv[1]);
-	map->theme = argv[2];
+	map->t = argv[2];
 	map->mlx_ptr = mlx_init();
 	map->win_ptr = mlx_new_window(map->mlx_ptr,
 			(map->x * SIZE), ((map->y + 1) * SIZE), "So long");
@@ -107,6 +110,7 @@ int	main(int argc, char **argv)
 		((map->y * SIZE) + 2), 0xFFFFFF, "Moves   :");
 	mlx_string_put(map->mlx_ptr, map->win_ptr,
 		(SIZE * 4) + 5, ((map->y * SIZE) + 2), 0xFFFFFF, "0");
+	mlx_hook(map->win_ptr, 17, 0, ft_close_click, map);
 	mlx_key_hook(map->win_ptr, deal_key, map);
 	mlx_loop(map->mlx_ptr);
 }

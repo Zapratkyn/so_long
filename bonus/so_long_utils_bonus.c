@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/26 17:47:15 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:46:43 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,21 @@ void	images_init(t_map *map)
 
 	size = 1 * SIZE;
 	map->images->hero = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->hero = mlx_xpm_file_to_image(map->mlx_ptr, ft_strjoin_theme("./images/", map->theme, "/Hero_3.xpm"), &size, &size);
+	map->images->hero = mlx_xpm_file_to_image(map->mlx_ptr,
+			ft_strjoin2("./img/", map->t, "/Hero_3.xpm"), &size, &size);
 	map->images->exit = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->exit = mlx_xpm_file_to_image(map->mlx_ptr, ft_strjoin_theme("./images/", map->theme, "/Exit_closed.xpm"), &size, &size);
+	map->images->exit = mlx_xpm_file_to_image(map->mlx_ptr,
+			ft_strjoin2("./img/", map->t, "/Exit_closed.xpm"), &size, &size);
 	map->images->wall = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->wall = mlx_xpm_file_to_image(map->mlx_ptr, ft_strjoin_theme("./images/", map->theme, "/Wall.xpm"), &size, &size);
+	map->images->wall = mlx_xpm_file_to_image(map->mlx_ptr,
+			ft_strjoin2("./img/", map->t, "/Wall.xpm"), &size, &size);
 	map->images->space = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->space = mlx_xpm_file_to_image(map->mlx_ptr, ft_strjoin_theme("./images/", map->theme, "/Ground.xpm"), &size, &size);
+	map->images->space = mlx_xpm_file_to_image(map->mlx_ptr,
+			ft_strjoin2("./img/", map->t, "/Ground.xpm"), &size, &size);
 	map->images->col = mlx_new_image(map->mlx_ptr, size, size);
-	map->images->col = mlx_xpm_file_to_image(map->mlx_ptr, ft_strjoin_theme("./images/", map->theme, "/Col.xpm"), &size, &size);
+	map->images->col = mlx_xpm_file_to_image(map->mlx_ptr,
+			ft_strjoin2("./img/", map->t, "/Col.xpm"), &size, &size);
+	map->images->trap = mlx_new_image(map->mlx_ptr, size, size);
+	map->images->trap = mlx_xpm_file_to_image(map->mlx_ptr,
+			ft_strjoin2("./img/", map->t, "/Trap.xpm"), &size, &size);
 }
