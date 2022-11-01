@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 17:37:14 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:11:29 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_map	*map_init(void)
 	map->bg->wall = NULL;
 	map->bg->space = NULL;
 	map->bg->exit = NULL;
+	map->bg->trap = NULL;
 	map->game->hero = NULL;
 	map->game->col = NULL;
 	return (map);
@@ -57,7 +58,7 @@ t_map	*ft_map(char *str)
 		error3("Error\nSome elements are missing or several.", map);
 	if (map->x > 51 || map->y > 25)
 		error3("Error\nThe map is too big for the screen.", map);
-	ft_check_paths(map)
+	// ft_check_paths(map);
 	return (map);
 }
 

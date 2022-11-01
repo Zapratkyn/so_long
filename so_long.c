@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 16:34:37 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:12:39 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_map	*map_init(void)
 	map->e = 0;
 	map->p = 0;
 	map->g = 0;
-	map->d = 0;
 	map->bg = malloc (sizeof(t_bg));
 	map->game = malloc (sizeof(t_game));
 	map->images = malloc (sizeof(t_images));

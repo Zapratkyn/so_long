@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 17:37:41 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:10:57 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ struct s_map
 	int					e;
 	int					p;
 	int					g;
-	int					d;
 	t_images			*images;
 	t_bg				*bg;
 	t_game				*game;

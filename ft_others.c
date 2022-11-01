@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:47:45 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/31 17:57:42 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/01 12:08:38 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,23 @@ int	ft_close_click(int keycode, t_game *game)
 	return (0);
 }
 
-void	ft_path_check(t_map *map, int x, int y)
-{
-	int		a;
-	int		b;
-	int		c;
-	t_wall	*wall;
-}
+// void	ft_path_check(t_map *map, int x, int y)
+// {
+// 	int		a;
+// 	int		b;
+// 	int		c;
+// 	t_wall	*wall;
+// }
 
-void	ft_check_paths(t_map *map)
-{
-	t_col	*col;
+// void	ft_check_paths(t_map *map)
+// {
+// 	t_col	*col;
 
-	col = map->game->col;
-	while (col)
-	{
-		ft_path_check(map, col->x, col->y);
-		col = col->next;
-	}
-	ft_path_check(map, map->bg->exit->x, map->bg->exit->y)
-}
+// 	col = map->game->col;
+// 	while (col)
+// 	{
+// 		ft_path_check(map, col->x, col->y);
+// 		col = col->next;
+// 	}
+// 	ft_path_check(map, map->bg->exit->x, map->bg->exit->y);
+// }
