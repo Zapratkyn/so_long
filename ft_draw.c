@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:19:18 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/01 12:11:51 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:39:20 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,17 @@ void	ft_draw(t_map *map)
 		}
 		y++;
 	}
+}
+
+void	ft_redraw_exit(t_map *map, int x, int y)
+{
+	int	size;
+
+	size = 1 * SIZE;
+	map->images->exit = mlx_xpm_file_to_image(map->mlx_ptr,
+			"./img/So_long/Exit_open.xpm", &size, &size);
+	mlx_put_image_to_window(map->mlx_ptr,
+		map->win_ptr, map->images->space, x * SIZE, y * SIZE);
+	mlx_put_image_to_window(map->mlx_ptr,
+		map->win_ptr, map->images->exit, x * SIZE, y * SIZE);
 }

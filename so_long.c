@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/01 16:40:24 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/02 17:56:24 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ t_map	*ft_map(char *str)
 		error3("Error\nThe map is a square.", map);
 	if (map->x > 52 || map->y > 25)
 		error3("Error\nThe map is too big for the screen.", map);
-	if (!ft_path_check(map, 1))
+	if (!ft_path_check_h(map, 1) && !ft_path_check_v(map, 1)
+		&& !all_in_one_h(map) && !all_in_one_v(map))
 		error3("Error\nUnreachable item or exit.", map);
 	return (map);
 }
