@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/02 17:57:27 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:22:23 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ t_map	*ft_map(char *str)
 		return (0);
 	get_infos(map, fd);
 	close(fd);
+	map->c_copy = map->c;
 	if (map->x == map->y)
 		error3("Error\nThe map is a square.", map);
 	if (map->c < 1 || map->e != 1 || map->p != 1)
 		error3("Error\nSome elements are missing or too many.", map);
 	if (map->x > 51 || map->y > 25)
 		error3("Error\nThe map is too big for the screen.", map);
-	if (!ft_path_check_h(map, 1) && !ft_path_check_v(map, 1)
-		&& !all_in_one_h(map) && !all_in_one_v(map))
+	if (!ft_check_path(map))
 		error3("Error\nUnreachable item or exit.", map);
 	return (map);
 }
@@ -98,6 +98,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 		error(1);
+	if (!check_map(argv[1]))
+		error(4);
 	if (!ft_check_theme(argv[2]))
 		error(2);
 	map = ft_map(argv[1]);

@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:38:42 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/02 18:04:35 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:15:00 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	error(int i)
 	}
 	if (i == 3)
 		ft_putendl_fd("Error\nEXPECTED FORMAT : ./so_long [map_path]", 2);
+	if (i == 4)
+		ft_putendl_fd("Error\nNo such map.", 2);
 	exit(EXIT_FAILURE);
 }
 

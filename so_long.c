@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:30:03 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/02 17:56:24 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:59:14 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ t_map	*ft_map(char *str)
 		error3("Error\nThe map is a square.", map);
 	if (map->x > 52 || map->y > 25)
 		error3("Error\nThe map is too big for the screen.", map);
-	if (!ft_path_check_h(map, 1) && !ft_path_check_v(map, 1)
-		&& !all_in_one_h(map) && !all_in_one_v(map))
+	if (!ft_check_path(map))
 		error3("Error\nUnreachable item or exit.", map);
 	return (map);
 }
@@ -85,6 +84,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		error(3);
+	if (!check_map(argv[1]))
+		error(4);
 	map = ft_map(argv[1]);
 	map->mlx_ptr = mlx_init();
 	map->win_ptr = mlx_new_window(map->mlx_ptr,

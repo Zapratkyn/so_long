@@ -6,34 +6,11 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:19:18 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/02 17:39:20 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:27:56 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_fill_square(t_map *map, int x, int y, int color)
-{
-	int	a;
-	int	b;
-	int	i;
-	int	j;
-
-	a = (x * SIZE);
-	b = (y * SIZE);
-	i = a;
-	j = b;
-	while (i < (a + SIZE) || j < (b + SIZE))
-	{
-		i = a;
-		while (i < (a + SIZE))
-		{
-			mlx_pixel_put(map->mlx_ptr, map->win_ptr, i, j, color);
-			i++;
-		}
-		j++;
-	}
-}
 
 void	ft_finder(t_map *map, int x, int y)
 {

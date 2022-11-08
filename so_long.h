@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/02 17:50:32 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:23:11 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,6 @@ void					get_element(char *str, t_map *map, int y);
 void					error(int i);
 void					error2(char *msg, t_map *map, char *str);
 void					error3(char *msg, t_map *map);
-// ft_success.c
-// void					ft_success(t_map *map);
 // ft_strchr_so_long.c
 void					ft_strchr_element(char *str, int y, char c, t_map *map);
 int						ft_strchr_walls_h(char *str);
@@ -174,31 +172,9 @@ int						deal_key_menu(int key, t_map *map);
 // ft_others.c
 void					ft_trap(t_map *map, int x, int y, char *str);
 int						ft_close_click(int keycode, t_game *game);
-int						*is_path(t_map *map, int *pos, char *next);
-int						*is_path2(t_map *map, int *pos, char *line);
-// check_path/data.c
-void					reset_data(t_map *map);
-int						check_data(t_map *map);
-int						check_data_final(t_map *map);
-void					ft_free_path(char *line, char *next, int *pos);
-// check_path/checks.c
-int						is_wall(char *line);
-int						is_element(t_map *map, char *line, int i);
-int						*ft_pos(t_map *map, char *line, char *next);
-int						is_pos(int *pos, int i);
-int						ft_open(t_map *map, char *next, int i);
-// check_path/check_path_h.c
-char					*next_line(char *map, int a, int x);
-int						ft_path_check_h(t_map *map, int y);
-// check_path/check_path_v.c
-char					*next_col(t_map *map, int a);
-int						ft_path_check_v(t_map *map, int y);
-// check_path/check_utils.c
-int						ft_way(t_map *map, char *line, char *next, int i);
-int						is_element_start(t_map *map, char *line,
-							char *next, int i);
-int						all_in_one_h(t_map *map);
-int						all_in_one_v(t_map *map);
+int						check_map(char *str);
+int						ft_check_path(t_map *map);
+void					ft_grid(t_map *map, int i);
 // bonus/ft_lose.c
 int						ft_lose(t_map *map, int x, int y, int i);
 

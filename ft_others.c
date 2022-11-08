@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:47:45 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/02 15:50:20 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:30:32 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,53 +42,43 @@ int	ft_close_click(int keycode, t_game *game)
 	return (0);
 }
 
-int	*is_path(t_map *map, int *pos, char *next)
+int	check_map(char *str)
 {
-	int	i;
-	int	k;
-	int	result[1000];
-
-	i = 0;
-	k = 0;
-	ft_bzero_int(result, 1000);
-	while (next[i])
-	{
-		if (is_pos(pos, i))
-		{
-			if (ft_open(map, next, i))
-				result[k++] = i;
-		}
-		i++;
-	}
-	free(pos);
-	return (ft_strdup_int(result));
+	if (!ft_strcmp(str, "maps/1.ber"))
+		return (1);
+	if (!ft_strcmp(str, "maps/2.ber"))
+		return (1);
+	if (!ft_strcmp(str, "maps/3.ber"))
+		return (1);
+	if (!ft_strcmp(str, "maps/4.ber"))
+		return (1);
+	return (0);
 }
 
-int	*is_path2(t_map *map, int *pos, char *line)
+int	ft_check_path(t_map *map)
 {
 	int	i;
-	int	j;
-	int	k;
-	int	result[1000];
 
-	i = 0;
-	k = 0;
-	ft_bzero_int(result, 1000);
-	while (line[i])
-	{
-		if (is_pos(pos, i))
-		{
-			is_element(map, line, i);
-			j = i;
-			while (is_element(map, line, i - 1))
-				result[k++] = i-- - 1;
-			i = j;
-			while (is_element(map, line, i + 1))
-				result[k++] = i++ + 1;
-			result[k++] = i;
-		}
-		i++;
-	}
-	free(pos);
-	return (ft_strdup_int(result));
+	i = (((map->x * map->game->hero->y) + map->game->hero->x) + 1);
+	ft_grid(map, i);
+	if (map->c_copy != 0 || map->e == 1)
+		return (0);
+	return (1);
+}
+
+void	ft_grid(t_map *map, int i)
+{
+	if (map->map[i] == 'C')
+		map->c_copy--;
+	if (map->map[i] == 'E')
+		map->e--;
+	if (i < 0 || !map->map[i] || map->map[i] == '1'
+		|| map->map[i] == 'X' || map->map[i] == 'E' || map->map[i] == 'T')
+		return ;
+	map->map[i] = 'X';
+	ft_grid(map, (i + (map->x + 1)));
+	ft_grid(map, (i - (map->x + 1)));
+	ft_grid(map, i + 1);
+	ft_grid(map, i - 1);
+	return ;
 }

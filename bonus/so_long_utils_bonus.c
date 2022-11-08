@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/02 18:04:42 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:26:11 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_end(t_map *map, unsigned int key_press, int i)
 	}
 	mlx_string_put(map->mlx_ptr, map->win_ptr, 180,
 		220, 0xFFFFFF, "PRESS Q TO QUIT");
+	mlx_hook(map->win_ptr, 17, 0, ft_close_click, map);
 	mlx_key_hook(map->win_ptr, deal_key_end, map);
 	mlx_loop(map->mlx_ptr);
 }
