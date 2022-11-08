@@ -6,22 +6,22 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/07 15:18:55 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/08 13:29:54 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_move(int key, t_map *map)
+int	ft_move(int key, t_map *map, unsigned int key_press)
 {
 	if (key == 122 || key == 65362)
-		return (ft_move_up(map));
+		return (ft_move_up(map, key_press));
 	else if (key == 113 || key == 65361)
-		return (ft_move_left(map));
+		return (ft_move_left(map, key_press));
 	else if (key == 115 || key == 65364)
-		return (ft_move_down(map));
+		return (ft_move_down(map, key_press));
 	else if (key == 100 || key == 65363)
-		return (ft_move_right(map));
+		return (ft_move_right(map, key_press));
 	else if (key == 65307)
 	{
 		mlx_destroy_window(map->mlx_ptr, map->win_ptr);

@@ -6,7 +6,7 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:22:43 by gponcele          #+#    #+#              #
-#    Updated: 2022/11/07 15:24:44 by gponcele         ###   ########.fr        #
+#    Updated: 2022/11/08 13:31:12 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ NAME_BONUS				=	so_long_bonus
 SRC_MAC					=	so_long.c get_info.c so_long_utils_mac.c ft_errors.c ft_strchr_so_long.c ft_free.c \
 							ft_draw.c ft_parsing.c ft_moves.c ft_moves_utils.c ft_others.c 
 SRC_LINUX				=	so_long.c get_info.c so_long_utils_linux.c ft_errors.c ft_strchr_so_long.c ft_free.c \
-							ft_draw.c ft_parsing.c ft_moves.c ft_images.c ft_moves_utils.c \
+							ft_draw.c ft_parsing.c ft_moves.c ft_moves_utils.c ft_others.c \
 							libft/ft_print_char.c libft/ft_print_nbr.c libft/ft_print_others.c libft/ft_printf.c \
 							libft/ft_putchar_fd.c libft/ft_putendl_fd.c libft/ft_putnbr_fd.c libft/ft_putstr_fd.c \
 							libft/ft_strlen.c libft/get_next_line.c libft/get_next_line_utils.c libft/ft_itoa.c \
-							ft_strjoin.c ft_strcmp.c libft/ft_strcmp.c libft/ft_strjoin.c
+							libft/ft_strcmp.c libft/ft_strjoin.c
 SRC_BONUS				=	bonus/so_long_bonus.c get_info.c bonus/so_long_utils_bonus.c ft_errors.c bonus/ft_strchr_so_long_bonus.c ft_free.c \
 							bonus/ft_draw_bonus.c ft_parsing.c bonus/ft_moves_bonus.c bonus/ft_moves_utils_bonus.c \
 							ft_others.c bonus/ft_lose.c
