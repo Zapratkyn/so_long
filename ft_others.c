@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:47:45 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/08 12:30:32 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:24:28 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	ft_check_path(t_map *map)
 
 	i = (((map->x * map->game->hero->y) + map->game->hero->x) + 1);
 	ft_grid(map, i);
+	free(map-map);
 	if (map->c_copy != 0 || map->e == 1)
 		return (0);
 	return (1);
