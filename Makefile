@@ -6,14 +6,14 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 16:22:43 by gponcele          #+#    #+#              #
-#    Updated: 2022/11/10 09:27:18 by gponcele         ###   ########.fr        #
+#    Updated: 2022/11/17 15:51:30 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME					=	so_long
 NAME_BONUS				=	so_long_bonus
 SRC_MAC					=	so_long.c get_info.c so_long_utils_mac.c ft_errors.c ft_strchr_so_long.c ft_free.c \
-							ft_draw.c ft_parsing.c ft_moves.c ft_moves_utils.c ft_others.c 
+							ft_draw.c ft_parsing.c ft_moves.c ft_moves_utils.c ft_others.c ft_success.c
 SRC_LINUX				=	so_long.c get_info.c so_long_utils_linux.c ft_errors.c ft_strchr_so_long.c ft_free.c \
 							ft_draw.c ft_parsing.c ft_moves.c ft_moves_utils.c ft_others.c \
 							libft/ft_print_char.c libft/ft_print_nbr.c libft/ft_print_others.c libft/ft_printf.c \
@@ -22,7 +22,7 @@ SRC_LINUX				=	so_long.c get_info.c so_long_utils_linux.c ft_errors.c ft_strchr_
 							libft/ft_strcmp.c libft/ft_strjoin.c
 SRC_BONUS				=	bonus/so_long_bonus.c get_info.c bonus/so_long_utils_bonus.c ft_errors.c bonus/ft_strchr_so_long_bonus.c ft_free.c \
 							bonus/ft_draw_bonus.c ft_parsing.c bonus/ft_moves_bonus.c bonus/ft_moves_utils_bonus.c \
-							ft_others.c bonus/ft_lose.c
+							ft_others.c bonus/ft_lose.c ft_success.c
 LIBFT					=	./libft/libft.a
 CC						=	gcc
 RM						=	rm -rf

@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:09:06 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/07 15:13:32 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:47:45 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_move(int key, t_map *map, unsigned int key_press)
 	else if (key == 53)
 	{
 		mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-		exit(EXIT_SUCCESS);
+		ft_success(map);
 	}
 	return (0);
 }

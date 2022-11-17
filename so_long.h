@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:28:56 by gponcele          #+#    #+#             */
-/*   Updated: 2022/11/08 12:23:11 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:47:25 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ void					error3(char *msg, t_map *map);
 void					ft_strchr_element(char *str, int y, char c, t_map *map);
 int						ft_strchr_walls_h(char *str);
 int						ft_strchr_walls_v(char *str, t_map *map);
+// ft_success.c
+void					ft_success(t_map *map);
 // ft_free.c
 void					ft_free_trap(t_map *map);
 void					ft_free_col(t_map *map);
